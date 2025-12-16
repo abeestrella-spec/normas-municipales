@@ -1,19 +1,16 @@
 [
   {
     "id": "trafico",
-    "titulo": "Código de Tráfico y Seguridad Vial",
+    "titulo": "Tráfico y Seguridad Vial",
     "categoria": "trafico",
     "meta": "RDL 6/2015 | BOE-020",
-    "resumen": "Ley fundamental que regula la circulación, el permiso por puntos, las infracciones y el cuadro de sanciones.",
-    
+    "resumen": "Ley fundamental que regula la circulación, el permiso por puntos, las infracciones y el cuadro de sanciones. Incluye regulación de VMP.",
     "link_fuente": "https://drive.google.com/file/d/1LbzVV0bCkgcAbDge90_5O--uyxiHIFM2/view?usp=drive_link",
-    
     "audio_url": "https://drive.google.com/file/d/1_GdDZ1LwsW-6Y6tQg5sqKEWJg3mn_tvK/view?usp=drive_link",
-    
-    "contenido_html": "<h3>Puntos Clave</h3><ul><li><strong>Alcohol:</strong> 0.25 mg/l (aire).</li><li><strong>Velocidad:</strong> Delito si supera en 60km/h (urbana) o 80km/h (interurbana).</li><li><strong>VMP:</strong> Prohibido aceras y zonas peatonales.</li></ul>",
+    "contenido_html": "<h3>1. Normas Generales</h3><p>Regulación del comportamiento en la circulación. <strong>Tasas de Alcohol:</strong> General 0.25 mg/l (aire), Profesionales/Noveles 0.15 mg/l. Menores: 0.0 mg/l.</p><ul><li><strong>Velocidad:</strong> Delito penal al superar en 60km/h (urbana) u 80km/h (interurbana).</li><li><strong>VMP:</strong> Prohibición de circular por aceras y zonas peatonales.</li></ul>",
     "flashcards": [
       { "front": "¿Tasa alcohol aire conductores noveles?", "back": "0.15 mg/l." },
-      { "front": "¿Plazo pago con descuento?", "back": "20 días naturales." },
+      { "front": "¿Plazo para pagar con descuento?", "back": "20 días naturales." },
       { "front": "¿Puntos por conducir con drogas?", "back": "6 puntos." }
     ],
     "test": [
@@ -23,10 +20,74 @@
         "correcta": 1
       },
       {
-        "pregunta": "¿Cuál es la velocidad máxima en autopista?",
-        "respuestas": ["100 km/h", "120 km/h", "130 km/h"],
+        "pregunta": "¿Se permiten auriculares al conducir?",
+        "respuestas": ["Sí", "No, prohibido", "Solo para GPS"],
         "correcta": 1
       }
+    ]
+  },
+  {
+    "id": "seguridad",
+    "titulo": "Seguridad Ciudadana (Ley 4/2015)",
+    "categoria": "operativo",
+    "meta": "LO 4/2015",
+    "resumen": "Ley Mordaza: Identificaciones, cacheos y régimen sancionador.",
+    "link_fuente": "",
+    "audio_url": "",
+    "contenido_html": "<h3>Actuaciones</h3><p>Identificación (máx 6 horas en dependencia) y Registros corporales externos.</p>",
+    "flashcards": [
+      { "front": "¿Tiempo máx identificación?", "back": "6 horas" }
+    ],
+    "test": [
+      { "pregunta": "¿La falta de respeto es...?", "respuestas": ["Grave", "Leve", "Delito"], "correcta": 1 }
+    ]
+  },
+  {
+    "id": "viogen",
+    "titulo": "Violencia de Género",
+    "categoria": "viogen",
+    "meta": "LO 1/2004",
+    "resumen": "Protección integral contra la violencia de género.",
+    "link_fuente": "",
+    "audio_url": "",
+    "contenido_html": "<h3>Protocolo VPR</h3><p>Valoración Policial del Riesgo obligatoria en sistema VioGén.</p>",
+    "flashcards": [
+      { "front": "¿Es necesaria convivencia?", "back": "No" }
+    ],
+    "test": [
+      { "pregunta": "¿Quién es el sujeto activo?", "respuestas": ["Cualquiera", "Hombre", "Mujer"], "correcta": 1 }
+    ]
+  },
+  {
+    "id": "menores",
+    "titulo": "Ley del Menor",
+    "categoria": "menores",
+    "meta": "LO 5/2000",
+    "resumen": "Responsabilidad penal de los menores (14-18 años).",
+    "link_fuente": "",
+    "audio_url": "",
+    "contenido_html": "<h3>Detención</h3><p>Máximo 24 horas. Notificación inmediata a Fiscalía y padres.</p>",
+    "flashcards": [
+      { "front": "¿Edad mínima penal?", "back": "14 años" }
+    ],
+    "test": [
+      { "pregunta": "¿Plazo máximo detención policía?", "respuestas": ["24h", "48h", "72h"], "correcta": 0 }
+    ]
+  },
+  {
+    "id": "drones",
+    "titulo": "UAS / Drones Policiales",
+    "categoria": "operativo",
+    "meta": "RD 517/2024",
+    "resumen": "Normativa para uso de drones en FFCCS (No EASA).",
+    "link_fuente": "",
+    "audio_url": "",
+    "contenido_html": "<h3>Requisitos</h3><p>Registro operador AESA, seguro y pilotos formados (STS-ES).</p>",
+    "flashcards": [
+      { "front": "¿Autoridad competente?", "back": "AESA" }
+    ],
+    "test": [
+      { "pregunta": "¿Es operación EASA?", "respuestas": ["Sí", "No"], "correcta": 1 }
     ]
   }
 ]

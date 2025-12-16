@@ -2,28 +2,29 @@
   {
     "id": "trafico",
     "titulo": "Código de Tráfico y Seguridad Vial",
-    "categoria": "Trafico",
-    "meta": "RDL 6/2015",
-    "resumen": "Normas de circulación y régimen sancionador.",
+    "categoria": "trafico",
+    "meta": "RDL 6/2015 | BOE-020",
+    "resumen": "Ley fundamental que regula la circulación, el permiso por puntos, las infracciones y el cuadro de sanciones.",
     
-    "link_fuente": "https://drive.google.com/file/d/1LbzVV0bCkgcAbDge90_5O--uyxiHIFM2/view?usp=sharing",
+    "link_fuente": "https://drive.google.com/file/d/1LbzVV0bCkgcAbDge90_5O--uyxiHIFM2/view?usp=drive_link",
     
-    "audio_url": "audio_trafico.mp3",
+    "audio_url": "https://drive.google.com/file/d/1_GdDZ1LwsW-6Y6tQg5sqKEWJg3mn_tvK/view?usp=drive_link",
     
-    "contenido_html": "<h3>Puntos Clave</h3><ul><li>Tasa general alcohol: 0.25 mg/l.</li><li>Velocidad en ciudad: 30 km/h.</li></ul>",
+    "contenido_html": "<h3>Puntos Clave</h3><ul><li><strong>Alcohol:</strong> 0.25 mg/l (aire).</li><li><strong>Velocidad:</strong> Delito si supera en 60km/h (urbana) o 80km/h (interurbana).</li><li><strong>VMP:</strong> Prohibido aceras y zonas peatonales.</li></ul>",
     "flashcards": [
-      { "front": "¿Tasa alcohol aire?", "back": "0.25 mg/l" },
-      { "front": "¿Caducidad ITV turismo?", "back": "4 años el primero" }
+      { "front": "¿Tasa alcohol aire conductores noveles?", "back": "0.15 mg/l." },
+      { "front": "¿Plazo pago con descuento?", "back": "20 días naturales." },
+      { "front": "¿Puntos por conducir con drogas?", "back": "6 puntos." }
     ],
     "test": [
       {
-        "pregunta": "¿Preferencia en rotonda?",
-        "respuestas": ["El que entra", "El que está dentro", "El más rápido"],
+        "pregunta": "¿Qué vehículo tiene preferencia en una glorieta?",
+        "respuestas": ["El que entra", "El que circula dentro", "El más rápido"],
         "correcta": 1
       },
       {
-        "pregunta": "¿Velocidad autopista?",
-        "respuestas": ["100", "120", "140"],
+        "pregunta": "¿Cuál es la velocidad máxima en autopista?",
+        "respuestas": ["100 km/h", "120 km/h", "130 km/h"],
         "correcta": 1
       }
     ]

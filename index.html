@@ -12,16 +12,22 @@
         
         /* TARJETA */
         .card { background: white; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden; }
-        .card-header { padding: 15px 20px; background: white; border-bottom: 1px solid #eee; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .card-header { padding: 15px 20px; background: white; border-bottom: 1px solid #eee; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none;}
         .card-header:hover { background: #f8f9fa; }
         .card-header h2 { margin: 0; color: var(--primary); font-size: 1.2rem; }
         
+        /* LA LÍNEA QUE FALTABA PARA QUE DESPLIEGUE */
+        .card-body { display: none; padding: 20px; background: #fff; }
+        .card.active .card-body { display: block !important; }
+        .card.active .card-header { background: #eef2f5; }
+        .card.active .fa-chevron-down { transform: rotate(180deg); }
+
         /* PESTAÑAS */
-        .tabs { display: flex; background: #eee; }
-        .tab-btn { flex: 1; padding: 12px; border: none; background: #eee; cursor: pointer; font-weight: 600; color: #555; }
-        .tab-btn.active { background: white; color: var(--secondary); border-bottom: 3px solid var(--secondary); }
-        .tab-content { display: none; padding: 20px; }
-        .tab-content.active { display: block; }
+        .tabs { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid #ddd; }
+        .tab-btn { flex: 1; padding: 12px; border: none; background: #eee; cursor: pointer; font-weight: 600; color: #555; border-radius: 5px 5px 0 0; }
+        .tab-btn.active { background: white; color: var(--secondary); border: 1px solid #ddd; border-bottom: 2px solid white; margin-bottom: -1px; }
+        .tab-content { display: none; padding-top: 10px; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s; }
 
         /* FLASHCARDS */
         .fc-container { perspective: 1000px; height: 220px; margin-bottom: 10px; cursor: pointer; }
@@ -39,6 +45,9 @@
         /* BOTONES */
         .btn-link { display: inline-block; padding: 10px 15px; background: var(--secondary); color: white; text-decoration: none; border-radius: 5px; margin-top: 10px; font-weight: bold; }
         .btn-nav { padding: 5px 15px; background: #ddd; border: none; border-radius: 4px; cursor: pointer; }
+        .drive-player { width: 100%; height: 150px; border: none; border-radius: 10px; margin-top: 10px; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
@@ -48,16 +57,17 @@
         <h1 style="color:var(--primary)"><i class="fas fa-shield-alt"></i> Normativa Policial</h1>
         <input type="text" id="search" placeholder="🔍 Buscar..." onkeyup="render()" style="padding:10px; width:100%; max-width:400px; border-radius:20px; border:1px solid #ccc;">
     </div>
-    <div id="app">Cargando...</div>
+    <div id="app" style="text-align:center">Cargando base de datos...</div>
 </div>
 
 <script>
     let DATA = [];
 
+    // Carga segura con "cache busting" para que no se quede enganchado en versiones viejas
     fetch('database.json?t=' + Date.now())
         .then(r => r.json())
         .then(d => { DATA = d; render(); })
-        .catch(e => document.getElementById('app').innerHTML = "<p style='text-align:center; color:red'>Error cargando datos. Revisa el archivo JSON.</p>");
+        .catch(e => document.getElementById('app').innerHTML = "<p style='color:red'>⚠️ Error: No se puede leer database.json. Revisa las comas.</p>");
 
     function render() {
         const term = document.getElementById('search').value.toLowerCase();
@@ -67,36 +77,36 @@
         DATA.forEach((item, i) => {
             if(!item.titulo.toLowerCase().includes(term)) return;
 
-            // Lógica Audio: Si es enlace Drive muestra botón, si es archivo muestra Player
-            let audioHTML = '';
-            if(item.audio_url) {
-                if(item.audio_url.includes('http')) {
-                    // Enlace externo (Drive)
-                    audioHTML = `<div style="text-align:center; padding:20px; background:#f0f0f0; border-radius:8px;">
-                        <p>⚠️ Archivo en la nube</p>
-                        <a href="${item.audio_url}" target="_blank" class="btn-link">▶️ Escuchar en Google Drive</a>
-                    </div>`;
+            // PREPARAR AUDIO (DRIVE O NORMAL)
+            let audioHTML = '<p>No hay audio disponible.</p>';
+            if(item.audio_url && item.audio_url.length > 5) {
+                if(item.audio_url.includes('drive.google.com')) {
+                    // Convertir enlace de Drive a modo PREVIEW (reproductor incrustado)
+                    let previewLink = item.audio_url.replace('/view', '/preview').replace('/edit', '/preview');
+                    audioHTML = `
+                        <div style="background:#f1f3f4; padding:15px; border-radius:10px;">
+                            <p><strong>🎧 Audio Resumen (Google Drive)</strong></p>
+                            <iframe class="drive-player" src="${previewLink}" allow="autoplay"></iframe>
+                            <br><small><a href="${item.audio_url}" target="_blank">🔗 Abrir en ventana nueva si falla</a></small>
+                        </div>`;
                 } else {
-                    // Archivo local (GitHub) - REPRODUCTOR NATIVO
-                    audioHTML = `<audio controls style="width:100%; margin-top:10px;">
-                        <source src="${item.audio_url}" type="audio/mpeg">
-                        Tu navegador no soporta el audio.
-                    </audio>`;
+                    // Archivo normal MP3
+                    audioHTML = `<audio controls style="width:100%"><source src="${item.audio_url}" type="audio/mpeg"></audio>`;
                 }
             }
 
             const html = `
             <div class="card">
                 <div class="card-header" onclick="this.parentElement.classList.toggle('active')">
-                    <strong>${item.titulo}</strong>
+                    <h2>${item.titulo}</h2>
                     <i class="fas fa-chevron-down"></i>
                 </div>
-                <div style="display:none" class="card-body">
+                <div class="card-body">
                     <div class="tabs">
-                        <button class="tab-btn active" onclick="openTab(event, 'doc-${i}')">Norma</button>
-                        <button class="tab-btn" onclick="openTab(event, 'fc-${i}')">Estudio</button>
-                        <button class="tab-btn" onclick="openTab(event, 'qz-${i}')">Test</button>
-                        <button class="tab-btn" onclick="openTab(event, 'av-${i}')">Audio</button>
+                        <button class="tab-btn active" onclick="openTab(event, 'doc-${i}')">📖 Norma</button>
+                        <button class="tab-btn" onclick="openTab(event, 'fc-${i}')">🧠 Estudio</button>
+                        <button class="tab-btn" onclick="openTab(event, 'qz-${i}')">✅ Test</button>
+                        <button class="tab-btn" onclick="openTab(event, 'av-${i}')">🎧 Audio</button>
                     </div>
 
                     <div id="doc-${i}" class="tab-content active">
@@ -116,33 +126,35 @@
                     </div>
 
                     <div id="av-${i}" class="tab-content">
-                        <h3>Audio Resumen</h3>
                         ${audioHTML}
                     </div>
                 </div>
             </div>`;
             app.innerHTML += html;
             
-            // Inicializar componentes tras insertar HTML
+            // Retraso mínimo para asegurar que el DOM existe antes de inyectar JS
             setTimeout(() => {
                 initFC(i, item.flashcards);
                 initQuiz(i, item.test);
-            }, 0);
+            }, 50);
         });
     }
 
-    // -- UTILS --
+    // -- UTILIDADES --
     window.openTab = (e, id) => {
         const p = e.target.closest('.card-body');
-        p.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+        p.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
         p.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(id).style.display = 'block';
+        document.getElementById(id).classList.add('active');
         e.target.classList.add('active');
     };
 
     // -- FLASHCARDS --
     function initFC(idx, cards) {
-        if(!cards || !cards.length) return;
+        if(!cards || !cards.length) {
+            document.getElementById(`fc-wrap-${idx}`).innerHTML = "No hay tarjetas.";
+            return;
+        }
         let curr = 0;
         const div = document.getElementById(`fc-wrap-${idx}`);
         
@@ -155,19 +167,22 @@
                     </div>
                 </div>
                 <div style="text-align:center; margin-top:10px;">
-                    <button class="btn-nav" onclick="prevFC(${idx})">❮</button>
+                    <button class="btn-nav" onclick="prevFC(${idx})">❮ Anterior</button>
                     <span style="margin:0 15px; font-weight:bold;">${curr+1} / ${cards.length}</span>
-                    <button class="btn-nav" onclick="nextFC(${idx})">❯</button>
+                    <button class="btn-nav" onclick="nextFC(${idx})">Siguiente ❯</button>
                 </div>`;
         };
         
+        // Guardamos el estado en el objeto global window para acceder desde onclick
         window[`fc_data_${idx}`] = { cards, curr };
+        
         window.prevFC = (i) => { 
             let d = window[`fc_data_${i}`]; 
             d.curr = (d.curr > 0) ? d.curr - 1 : d.cards.length - 1; 
-            initFC(i, d.cards); 
-            window[`fc_data_${i}`].curr = d.curr; // Hack refresh
+            initFC(i, d.cards); // Re-renderizar
+            window[`fc_data_${i}`].curr = d.curr; 
         };
+        
         window.nextFC = (i) => { 
             let d = window[`fc_data_${i}`]; 
             d.curr = (d.curr < d.cards.length - 1) ? d.curr + 1 : 0; 
@@ -179,7 +194,7 @@
 
     // -- TEST --
     function initQuiz(idx, questions) {
-        if(!questions) return;
+        if(!questions || !questions.length) return;
         const div = document.getElementById(`qz-wrap-${idx}`);
         let score = 0, answered = 0;
         
@@ -187,29 +202,30 @@
             <div class="q-block" id="q-${idx}-${qId}" style="margin-bottom:20px; border-bottom:1px solid #eee; padding-bottom:10px;">
                 <p><strong>${qId+1}. ${q.pregunta}</strong></p>
                 ${q.respuestas.map((r, rId) => `
-                    <div class="quiz-opt" onclick="checkQ(${idx}, ${qId}, ${rId}, ${q.correcta})">${r}</div>
+                    <div class="quiz-opt" id="opt-${idx}-${qId}-${rId}" onclick="checkQ(${idx}, ${qId}, ${rId}, ${q.correcta})">${r}</div>
                 `).join('')}
             </div>
         `).join('');
 
         window.checkQ = (nId, qId, rId, corr) => {
             const block = document.getElementById(`q-${nId}-${qId}`);
-            if(block.classList.contains('done')) return;
+            if(block.classList.contains('done')) return; // Evitar responder dos veces
             block.classList.add('done');
             
             const opts = block.getElementsByClassName('quiz-opt');
             if(rId === corr) {
-                opts[rId].classList.add('correct');
+                document.getElementById(`opt-${nId}-${qId}-${rId}`).classList.add('correct');
                 score++;
             } else {
-                opts[rId].classList.add('wrong');
-                opts[corr].classList.add('correct');
+                document.getElementById(`opt-${nId}-${qId}-${rId}`).classList.add('wrong');
+                // Mostrar la correcta para aprender
+                document.getElementById(`opt-${nId}-${qId}-${corr}`).classList.add('correct');
             }
             answered++;
             
             if(answered === questions.length) {
                 const sDiv = document.getElementById(`qz-score-${nId}`);
-                sDiv.innerText = `Resultado: ${score} / ${questions.length}`;
+                sDiv.innerText = `Resultado: ${score} de ${questions.length} aciertos`;
                 sDiv.style.color = score >= (questions.length/2) ? 'green' : 'red';
             }
         };

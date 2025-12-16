@@ -3,307 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma de Formación Policial - 8n8 & Jules</title>
+    <title>Policía Local - Centro de Conocimiento</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #003366;
-            --secondary: #0055a5;
-            --accent: #eebb00;
-            --light: #f4f7f6;
-            --success: #28a745;
-            --danger: #dc3545;
+            --primary: #0a2342; /* Azul Policial Oscuro */
+            --secondary: #14467d; /* Azul Policial Claro */
+            --accent: #d4af37; /* Dorado Placa */
+            --bg: #f0f2f5;
+            --text: #2c3e50;
+            --success: #27ae60;
+            --danger: #c0392b;
         }
         
-        body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--light); margin: 0; color: #333; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
         
-        /* CABECERA */
-        header { background: var(--primary); color: white; padding: 20px; text-align: center; }
-        .search-container { position: sticky; top: 0; background: var(--primary); padding: 10px 20px; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        input#search { width: 100%; max-width: 800px; padding: 12px; border-radius: 20px; border: none; font-size: 16px; display: block; margin: 0 auto; }
-
-        /* CONTENEDOR */
-        .container { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
-
-        /* TARJETA PRINCIPAL */
-        .card { background: white; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow: hidden; border-left: 5px solid var(--secondary); }
+        /* HEADER FIJO */
+        header { background: var(--primary); color: white; padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); display: flex; justify-content: space-between; align-items: center; }
+        .logo-area h1 { margin: 0; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
+        .logo-area span { font-size: 0.8rem; color: var(--accent); display: block; }
         
-        /* CABECERA DE LA TARJETA */
-        .card-header { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: white; }
-        .card-header:hover { background: #f9f9f9; }
-        .card-title h3 { margin: 0; color: var(--primary); }
-        .card-meta { font-size: 0.8em; color: #666; margin-top: 5px; }
-        .icon-toggle { font-weight: bold; font-size: 1.5em; color: var(--secondary); transition: 0.3s; }
-        .card.active .icon-toggle { transform: rotate(180deg); }
+        /* BUSCADOR POTENTE */
+        .search-wrapper { position: relative; width: 400px; }
+        #searchInput { width: 100%; padding: 12px 40px 12px 20px; border-radius: 25px; border: none; outline: none; font-size: 0.95rem; background: rgba(255,255,255,0.9); transition: 0.3s; }
+        #searchInput:focus { background: white; box-shadow: 0 0 15px rgba(212, 175, 55, 0.5); width: 100%; }
+        .search-icon { position: absolute; right: 15px; top: 10px; color: var(--secondary); }
 
-        /* CUERPO DE LA TARJETA (PESTAÑAS) */
-        .card-body { display: none; border-top: 1px solid #eee; }
-        .card.active .card-body { display: block; }
+        /* CONTENEDOR PRINCIPAL */
+        .main-container { max-width: 1200px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: 250px 1fr; gap: 30px; }
 
-        /* NAVEGACIÓN DE PESTAÑAS */
-        .tabs { display: flex; background: #eee; }
-        .tab-btn { flex: 1; padding: 12px; border: none; background: #eee; cursor: pointer; border-bottom: 3px solid transparent; font-weight: bold; color: #555; }
-        .tab-btn:hover { background: #ddd; }
-        .tab-btn.active { background: white; border-bottom: 3px solid var(--secondary); color: var(--primary); }
+        /* MENÚ LATERAL (CATEGORÍAS) */
+        .sidebar { background: white; padding: 20px; border-radius: 12px; height: fit-content; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 100px; }
+        .filter-btn { display: block; width: 100%; padding: 12px; margin-bottom: 8px; border: none; background: none; text-align: left; cursor: pointer; border-radius: 8px; font-weight: 600; color: #666; transition: 0.2s; }
+        .filter-btn:hover { background: #f0f4f8; color: var(--secondary); }
+        .filter-btn.active { background: var(--secondary); color: white; }
+        .filter-btn i { width: 25px; }
 
-        /* CONTENIDO DE LAS PESTAÑAS */
-        .tab-content { padding: 25px; display: none; animation: fadeIn 0.3s; }
+        /* LISTA DE NORMAS */
+        .content-area { display: flex; flex-direction: column; gap: 20px; }
+
+        /* TARJETA DE NORMA (EXPANDIBLE) */
+        .norma-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: 0.3s; border-left: 5px solid var(--secondary); }
+        .norma-card:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        
+        .norma-header { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: white; }
+        .header-content h2 { margin: 0; font-size: 1.2rem; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+        .header-meta { font-size: 0.85rem; color: #888; margin-top: 5px; }
+        .tags { display: flex; gap: 8px; margin-top: 8px; }
+        .tag { font-size: 0.7rem; padding: 3px 10px; border-radius: 12px; background: #eee; font-weight: bold; }
+        .tag.operativo { background: #ffebee; color: #c62828; }
+        .tag.juridico { background: #e3f2fd; color: #1565c0; }
+        .tag.social { background: #e8f5e9; color: #2e7d32; }
+
+        /* PESTAÑAS INTERNAS */
+        .norma-body { display: none; border-top: 1px solid #eee; }
+        .card-tabs { display: flex; background: #f8f9fa; border-bottom: 1px solid #eee; }
+        .card-tab-btn { flex: 1; padding: 15px; border: none; background: none; cursor: pointer; font-weight: 600; color: #666; border-bottom: 3px solid transparent; transition: 0.3s; }
+        .card-tab-btn:hover { background: #e9ecef; }
+        .card-tab-btn.active { color: var(--secondary); border-bottom-color: var(--secondary); background: white; }
+        
+        .tab-content { padding: 25px; display: none; animation: fadeIn 0.4s; }
         .tab-content.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* --- ESTILOS ESPECÍFICOS PARA LAS HERRAMIENTAS --- */
-
-        /* 1. TARJETAS DE MEMORIA (FLASHCARDS) */
-        .flashcard-container { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-        .flashcard { 
-            width: 250px; height: 180px; perspective: 1000px; cursor: pointer; 
-        }
-        .flashcard-inner {
-            position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 10px;
-        }
+        /* ESTILOS DE CONTENIDO */
+        .flashcard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+        .flashcard { background: white; border: 1px solid #ddd; height: 150px; perspective: 1000px; cursor: pointer; border-radius: 8px; }
+        .flashcard-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; display: flex; align-items: center; justify-content: center; padding: 10px; }
         .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
-        .flashcard-front, .flashcard-back {
-            position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; padding: 15px; box-sizing: border-box; font-size: 0.9em;
+        .fc-front, .fc-back { position: absolute; backface-visibility: hidden; width: 90%; }
+        .fc-front { font-weight: bold; color: var(--primary); }
+        .fc-back { transform: rotateY(180deg); color: var(--success); font-size: 0.9rem; }
+
+        .audio-player { background: #f1f3f4; padding: 15px; border-radius: 50px; display: flex; align-items: center; gap: 15px; }
+        .audio-player i { font-size: 1.5rem; color: var(--primary); }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .hidden { display: none !important; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .main-container { grid-template-columns: 1fr; }
+            .sidebar { position: static; display: flex; overflow-x: auto; gap: 10px; padding: 10px; }
+            .filter-btn { width: auto; white-space: nowrap; margin: 0; }
         }
-        .flashcard-front { background-color: var(--primary); color: white; font-weight: bold; }
-        .flashcard-back { background-color: #fff; color: #333; transform: rotateY(180deg); border: 2px solid var(--primary); }
-
-        /* 2. TEST INTERACTIVO */
-        .quiz-item { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
-        .question { font-weight: bold; margin-bottom: 10px; display: block; }
-        .options label { display: block; padding: 8px; margin: 5px 0; background: #f9f9f9; border-radius: 4px; cursor: pointer; transition: 0.2s; }
-        .options label:hover { background: #e9ecef; }
-        .feedback { margin-top: 10px; font-weight: bold; padding: 5px; border-radius: 4px; display: none; }
-        .feedback.correct { color: var(--success); background: #d4edda; }
-        .feedback.incorrect { color: var(--danger); background: #f8d7da; }
-
-        /* 3. MULTIMEDIA */
-        audio { width: 100%; margin-top: 10px; }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
     </style>
 </head>
 <body>
 
 <header>
-    <h1>📚 8n8 Academy: Repositorio Policial</h1>
-    <p>Documentación, Test y Audio-Resúmenes | Uso Interno</p>
+    <div class="logo-area">
+        <h1><i class="fas fa-shield-alt"></i> PL-HUB</h1>
+        <span>SISTEMA INTEGRAL DE GESTIÓN POLICIAL</span>
+    </div>
+    <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="Buscar procedimiento, ley, concepto...">
+        <i class="fas fa-search search-icon"></i>
+    </div>
 </header>
 
-<div class="search-container">
-    <input type="text" id="search" onkeyup="filtrar()" placeholder="🔍 Buscar norma, concepto, pregunta de test...">
-</div>
-
-<div class="container" id="listaNormas">
-
-    <div class="card">
-        <div class="card-header" onclick="toggleCard(this)">
-            <div class="card-title">
-                <h3>🚁 PNT Operaciones con Drones (UAS)</h3>
-                <div class="card-meta">Reglamento de Ejecución (UE) 2019/947 | Seguridad Aérea</div>
-            </div>
-            <span class="icon-toggle">▼</span>
-        </div>
-        
-        <div class="card-body">
-            <div class="tabs">
-                <button class="tab-btn active" onclick="openTab(event, 'doc-drones')">📄 Norma</button>
-                <button class="tab-btn" onclick="openTab(event, 'study-drones')">🧠 Estudio</button>
-                <button class="tab-btn" onclick="openTab(event, 'quiz-drones')">✅ Test</button>
-                <button class="tab-btn" onclick="openTab(event, 'media-drones')">🎧 Audio</button>
-            </div>
-
-            <div id="doc-drones" class="tab-content active">
-                <h4>Marco Legal y Competencias</h4>
-                <p>El uso de sistemas de aeronaves no tripuladas (UAS) por parte de la Policía Local se enmarca en las "actividades no EASA" (policía, aduanas, etc.), bajo la supervisión de <strong>AESA</strong> según el Real Decreto 517/2024.</p>
-                <h4>Requisitos Operativos</h4>
-                <ul>
-                    <li>Registro de Operador en AESA.</li>
-                    <li>Seguro de Responsabilidad Civil específico.</li>
-                    <li>Pilotos con formación STS-ES.</li>
-                    <li>Manual de Operaciones actualizado.</li>
-                </ul>
-            </div>
-
-            <div id="study-drones" class="tab-content">
-                <div class="flashcard-container">
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">¿Quién es la autoridad competente para UAS policiales?</div>
-                            <div class="flashcard-back">AESA (Agencia Estatal de Seguridad Aérea).</div>
-                        </div>
-                    </div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">¿Qué seguro es obligatorio?</div>
-                            <div class="flashcard-back">Responsabilidad Civil específica de aviación.</div>
-                        </div>
-                    </div>
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">¿Se puede volar sobre aglomeraciones?</div>
-                            <div class="flashcard-back">Solo si se dispone de medidas de mitigación y autorización específica (SORA).</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="quiz-drones" class="tab-content">
-                <div class="quiz-item">
-                    <span class="question">1. ¿Qué normativa regula el régimen jurídico civil de los UAS en España?</span>
-                    <div class="options">
-                        <label onclick="checkAnswer(this, false)">a) La Constitución Española.</label>
-                        <label onclick="checkAnswer(this, true)">b) El Real Decreto 517/2024.</label>
-                        <label onclick="checkAnswer(this, false)">c) El Código Penal.</label>
-                    </div>
-                    <div class="feedback"></div>
-                </div>
-                <div class="quiz-item">
-                    <span class="question">2. ¿Es necesario registrarse como operador?</span>
-                    <div class="options">
-                        <label onclick="checkAnswer(this, true)">a) Sí, es obligatorio en AESA.</label>
-                        <label onclick="checkAnswer(this, false)">b) No, solo para drones de más de 25kg.</label>
-                    </div>
-                    <div class="feedback"></div>
-                </div>
-            </div>
-
-            <div id="media-drones" class="tab-content">
-                <h4>Resumen de Audio (NotebookLM)</h4>
-                <p>Escucha el resumen ejecutivo generado por la IA sobre la normativa de drones.</p>
-                <audio controls>
-                    <source src="nombre-archivo-drones.mp3" type="audio/mpeg">
-                    Tu navegador no soporta el elemento de audio.
-                </audio>
-            </div>
-        </div>
+<div class="main-container">
+    
+    <div class="sidebar">
+        <button class="filter-btn active" onclick="filterCategory('all')"><i class="fas fa-layer-group"></i> Todo</button>
+        <button class="filter-btn" onclick="filterCategory('operativo')"><i class="fas fa-helicopter"></i> Operativo (Drones)</button>
+        <button class="filter-btn" onclick="filterCategory('viogen')"><i class="fas fa-female"></i> VioGén</button>
+        <button class="filter-btn" onclick="filterCategory('menores')"><i class="fas fa-child"></i> Menores</button>
+        <button class="filter-btn" onclick="filterCategory('trafico')"><i class="fas fa-car"></i> Tráfico</button>
     </div>
 
-    <div class="card">
-        <div class="card-header" onclick="toggleCard(this)">
-            <div class="card-title">
-                <h3>💜 Protocolo Violencia de Género (VioGén)</h3>
-                <div class="card-meta">Ley Orgánica 1/2004 | Protección de Víctimas</div>
+    <div class="content-area" id="normsList">
+
+        <div class="norma-card" data-category="operativo">
+            <div class="norma-header" onclick="toggleCard(this)">
+                <div class="header-content">
+                    <h2><i class="fas fa-drone"></i> PNT Operaciones con Drones (UAS)</h2>
+                    <div class="header-meta">RD 517/2024 | Agencia Estatal de Seguridad Aérea</div>
+                    <div class="tags"><span class="tag operativo">OPERATIVO</span><span class="tag juridico">NORMATIVA</span></div>
+                </div>
+                <i class="fas fa-chevron-down"></i>
             </div>
-            <span class="icon-toggle">▼</span>
+            <div class="norma-body">
+                <div class="card-tabs">
+                    <button class="card-tab-btn active" onclick="openTab(event, 'doc-1')">📜 Procedimiento</button>
+                    <button class="card-tab-btn" onclick="openTab(event, 'study-1')">🧠 Flashcards</button>
+                    <button class="card-tab-btn" onclick="openTab(event, 'quiz-1')">✅ Test Rápido</button>
+                </div>
+                <div id="doc-1" class="tab-content active">
+                    <h3>1. Marco Legal</h3>
+                    <p>El uso de UAS por Policía Local se enmarca en "actividades o servicios no EASA" (excluidas del reglamento base europeo). La autoridad competente es <strong>AESA</strong>.</p>
+                    <h3>2. Requisitos Previos al Vuelo</h3>
+                    <ul>
+                        <li><strong>Registro:</strong> El Ayuntamiento debe ser Operador registrado en AESA.</li>
+                        <li><strong>Seguro:</strong> Póliza específica de aviación obligatoria.</li>
+                        <li><strong>Pilotos:</strong> Formación teórica y práctica (STS-ES).</li>
+                    </ul>
+                    <h3>3. Operativa (Checklist)</h3>
+                    <p>Antes de volar: Consultar <strong>ENAIRE Drones</strong> para verificar zonas ZEPA, CTR o prohibidas.</p>
+                </div>
+                <div id="study-1" class="tab-content">
+                    <div class="flashcard-grid">
+                        <div class="flashcard" onclick="flip(this)"><div class="flashcard-inner"><div class="fc-front">¿Autoridad competente para PL?</div><div class="fc-back">AESA (Agencia Estatal de Seguridad Aérea)</div></div></div>
+                        <div class="flashcard" onclick="flip(this)"><div class="flashcard-inner"><div class="fc-front">¿Tipo de operación Policial?</div><div class="fc-back">Actividad NO EASA</div></div></div>
+                        <div class="flashcard" onclick="flip(this)"><div class="flashcard-inner"><div class="fc-front">¿Requisito obligatorio piloto?</div><div class="fc-back">Formación STS-ES y Práctica</div></div></div>
+                    </div>
+                </div>
+                <div id="quiz-1" class="tab-content">
+                    <p><strong>1. ¿Es obligatorio el seguro de responsabilidad civil?</strong></p>
+                    <button onclick="check(this, true)">Sí, específico de aviación.</button>
+                    <button onclick="check(this, false)">No, sirve el del Ayuntamiento.</button>
+                </div>
+            </div>
         </div>
-        
-        <div class="card-body">
-            <div class="tabs">
-                <button class="tab-btn active" onclick="openTab(event, 'doc-viogen')">📄 Norma</button>
-                <button class="tab-btn" onclick="openTab(event, 'study-viogen')">🧠 Estudio</button>
-                <button class="tab-btn" onclick="openTab(event, 'quiz-viogen')">✅ Test</button>
-                <button class="tab-btn" onclick="openTab(event, 'media-viogen')">🎧 Audio</button>
-            </div>
 
-            <div id="doc-viogen" class="tab-content active">
-                <p><em>[PEGA AQUÍ EL TEXTO DE LA NORMA DESDE NOTEBOOKLM]</em></p>
+        <div class="norma-card" data-category="viogen">
+            <div class="norma-header" onclick="toggleCard(this)">
+                <div class="header-content">
+                    <h2><i class="fas fa-hand-holding-heart"></i> Protocolo VioGén y Violencia Doméstica</h2>
+                    <div class="header-meta">Ley Orgánica 1/2004 | Instrucción SES 4/2019</div>
+                    <div class="tags"><span class="tag social">PROTECCIÓN</span><span class="tag juridico">PENAL</span></div>
+                </div>
+                <i class="fas fa-chevron-down"></i>
             </div>
-
-            <div id="study-viogen" class="tab-content">
-                <div class="flashcard-container">
-                    <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">PREGUNTA TARJETA 1</div>
-                            <div class="flashcard-back">RESPUESTA TARJETA 1</div>
+            <div class="norma-body">
+                <div class="card-tabs">
+                    <button class="card-tab-btn active" onclick="openTab(event, 'doc-2')">📜 Procedimiento</button>
+                    <button class="card-tab-btn" onclick="openTab(event, 'audio-2')">🎧 Audio Resumen</button>
+                </div>
+                <div id="doc-2" class="tab-content active">
+                    <h3>1. Valoración Policial del Riesgo (VPR)</h3>
+                    <p>Tras la denuncia, es obligatorio realizar la VPR en el sistema VioGén. Niveles: No apreciado, Bajo, Medio, Alto, Extremo.</p>
+                    <h3>2. Medidas de Protección</h3>
+                    <ul>
+                        <li><strong>Riesgo Bajo:</strong> Facilitar teléfonos de contacto y medidas de autoprotección.</li>
+                        <li><strong>Riesgo Medio:</strong> Control ocasional del agresor y contacto periódico con la víctima.</li>
+                        <li><strong>Riesgo Alto/Extremo:</strong> Vigilancia permanente o frecuente.</li>
+                    </ul>
+                </div>
+                <div id="audio-2" class="tab-content">
+                    <div class="audio-player">
+                        <i class="fas fa-play-circle"></i>
+                        <div>
+                            <strong>Podcast: Claves de la Ley 1/2004</strong><br>
+                            <small>Generado por NotebookLM (Duración: 12 min)</small>
                         </div>
+                        <audio controls style="width: 200px;">
+                            <source src="" type="audio/mpeg">
+                        </audio>
                     </div>
                 </div>
-            </div>
-
-            <div id="quiz-viogen" class="tab-content">
-                <div class="quiz-item">
-                    <span class="question">1. Escribe aquí la pregunta...</span>
-                    <div class="options">
-                        <label onclick="checkAnswer(this, false)">a) Respuesta incorrecta</label>
-                        <label onclick="checkAnswer(this, true)">b) Respuesta CORRECTA</label>
-                        <label onclick="checkAnswer(this, false)">c) Respuesta incorrecta</label>
-                    </div>
-                    <div class="feedback"></div>
-                </div>
-            </div>
-
-            <div id="media-viogen" class="tab-content">
-                <audio controls>
-                    <source src="audio-viogen.mp3" type="audio/mpeg">
-                </audio>
             </div>
         </div>
-    </div>
 
+        <div class="norma-card" data-category="menores">
+            <div class="norma-header" onclick="toggleCard(this)">
+                <div class="header-content">
+                    <h2><i class="fas fa-user-graduate"></i> Responsabilidad Penal del Menor</h2>
+                    <div class="header-meta">Ley Orgánica 5/2000 | Código Civil</div>
+                    <div class="tags"><span class="tag social">MENORES</span><span class="tag juridico">PENAL</span></div>
+                </div>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="norma-body">
+                <div class="card-tabs">
+                    <button class="card-tab-btn active" onclick="openTab(event, 'doc-3')">📜 Procedimiento</button>
+                    <button class="card-tab-btn" onclick="openTab(event, 'quiz-3')">✅ Test Casos</button>
+                </div>
+                <div id="doc-3" class="tab-content active">
+                    <h3>Detención de Menores</h3>
+                    <p>La detención de un menor debe notificarse <strong>inmediatamente</strong> al Ministerio Fiscal y a los padres/tutores. El plazo máximo de detención policial es de <strong>24 horas</strong> (frente a las 72h de adultos).</p>
+                    <h3>Derechos Específicos</h3>
+                    <ul>
+                        <li>Derecho a ser informado en lenguaje claro.</li>
+                        <li>Asistencia letrada desde el primer momento.</li>
+                        <li>Custodia separada de adultos en dependencias policiales.</li>
+                    </ul>
+                </div>
+                <div id="quiz-3" class="tab-content">
+                    <p><strong>1. ¿Cuál es el plazo máximo de detención policial de un menor?</strong></p>
+                    <button onclick="check(this, true)">24 horas.</button>
+                    <button onclick="check(this, false)">72 horas.</button>
+                    <button onclick="check(this, false)">48 horas.</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="norma-card" data-category="trafico">
+            <div class="norma-header" onclick="toggleCard(this)">
+                <div class="header-content">
+                    <h2><i class="fas fa-traffic-light"></i> Código de Tráfico y Seguridad Vial</h2>
+                    <div class="header-meta">RDL 6/2015 | Reglamento General de Circulación</div>
+                    <div class="tags"><span class="tag operativo">TRÁFICO</span><span class="tag juridico">SANCIONES</span></div>
+                </div>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="norma-body">
+                <div class="card-tabs">
+                    <button class="card-tab-btn active" onclick="openTab(event, 'doc-4')">📜 Procedimiento</button>
+                </div>
+                <div id="doc-4" class="tab-content active">
+                    <h3>Inmovilización de Vehículos</h3>
+                    <p>Los agentes podrán proceder a la inmovilización del vehículo cuando:</p>
+                    <ul>
+                        <li>El conductor se niegue a efectuar las pruebas de alcoholemia.</li>
+                        <li>El vehículo carezca de seguro obligatorio.</li>
+                        <li>Se superen los niveles de gases, humos o ruidos permitidos.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <script>
-    // 1. FUNCIÓN PARA ABRIR/CERRAR TARJETAS
+    // LÓGICA DE INTERFAZ (JULES AGENT)
+    
+    // 1. Desplegar Tarjetas
     function toggleCard(header) {
-        header.parentElement.classList.toggle('active');
+        const body = header.nextElementSibling;
+        const icon = header.querySelector('.fa-chevron-down');
+        
+        if (body.style.display === "block") {
+            body.style.display = "none";
+            icon.style.transform = "rotate(0deg)";
+        } else {
+            body.style.display = "block";
+            icon.style.transform = "rotate(180deg)";
+        }
     }
 
-    // 2. FUNCIÓN PARA CAMBIAR DE PESTAÑA
-    function openTab(evt, tabName) {
-        // Buscar la tarjeta padre actual para no afectar a otras
-        var cardBody = evt.currentTarget.closest('.card-body');
+    // 2. Pestañas Internas
+    function openTab(evt, tabId) {
+        const parent = evt.target.closest('.norma-body');
         
         // Ocultar todos los contenidos de esta tarjeta
-        var tabContents = cardBody.getElementsByClassName("tab-content");
-        for (var i = 0; i < tabContents.length; i++) {
-            tabContents[i].style.display = "none";
-            tabContents[i].classList.remove("active");
-        }
+        parent.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+        // Desactivar botones
+        parent.querySelectorAll('.card-tab-btn').forEach(btn => btn.classList.remove('active'));
 
-        // Desactivar todos los botones de esta tarjeta
-        var tabLinks = cardBody.getElementsByClassName("tab-btn");
-        for (var i = 0; i < tabLinks.length; i++) {
-            tabLinks[i].className = tabLinks[i].className.replace(" active", "");
-        }
-
-        // Mostrar el actual
-        document.getElementById(tabName).style.display = "block";
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.className += " active";
+        // Activar el seleccionado
+        document.getElementById(tabId).classList.add('active');
+        evt.target.classList.add('active');
     }
 
-    // 3. FUNCIÓN DEL BUSCADOR
-    function filtrar() {
-        var input = document.getElementById('search');
-        var filter = input.value.toUpperCase();
-        var lista = document.getElementById("listaNormas");
-        var cards = lista.getElementsByClassName('card');
-
-        for (var i = 0; i < cards.length; i++) {
-            var text = cards[i].innerText;
-            if (text.toUpperCase().indexOf(filter) > -1) {
-                cards[i].style.display = "";
-            } else {
-                cards[i].style.display = "none";
-            }
-        }
+    // 3. Flashcards (Giro)
+    function flip(card) {
+        card.classList.toggle('flipped');
     }
 
-    // 4. LÓGICA DEL TEST (CORREGIR)
-    function checkAnswer(option, isCorrect) {
-        var feedback = option.parentElement.nextElementSibling;
-        
-        // Reseteamos colores
-        var options = option.parentElement.getElementsByTagName('label');
-        for(var i=0; i<options.length; i++) {
-            options[i].style.background = "#f9f9f9";
-            options[i].style.color = "#333";
-        }
-
-        if (isCorrect) {
-            option.style.background = "#d4edda";
-            option.style.color = "#155724";
-            feedback.innerText = "¡Correcto! ✅";
-            feedback.className = "feedback correct";
+    // 4. Test Interactivo (Feedback)
+    function check(btn, isCorrect) {
+        if(isCorrect) {
+            btn.style.background = "#d4edda";
+            btn.style.border = "1px solid #28a745";
+            btn.innerHTML += " ✅ ¡CORRECTO!";
         } else {
-            option.style.background = "#f8d7da";
-            option.style.color = "#721c24";
-            feedback.innerText = "Incorrecto ❌. Inténtalo de nuevo.";
-            feedback.className = "feedback incorrect";
+            btn.style.background = "#f8d7da";
+            btn.style.border = "1px solid #dc3545";
+            btn.innerHTML += " ❌ Error";
         }
-        feedback.style.display = "block";
+    }
+
+    // 5. Buscador en Tiempo Real
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('keyup', function(e) {
+        const term = e.target.value.toLowerCase();
+        const cards = document.querySelectorAll('.norma-card');
+        
+        cards.forEach(card => {
+            const text = card.innerText.toLowerCase();
+            if(text.includes(term)) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+    });
+
+    // 6. Filtros de Categoría
+    function filterCategory(cat) {
+        // Actualizar botones
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        const cards = document.querySelectorAll('.norma-card');
+        cards.forEach(card => {
+            if(cat === 'all' || card.dataset.category === cat) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+            }
+        });
     }
 </script>
 

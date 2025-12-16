@@ -1,173 +1,29 @@
 [
   {
     "id": "trafico",
-    "titulo": "Tráfico y Seguridad Vial (RDL 6/2015)",
+    "titulo": "Código de Tráfico y Seguridad Vial",
     "categoria": "trafico",
-    "meta": "Real Decreto Legislativo 6/2015 | BOE-020",
-    "resumen": "Ley fundamental que regula la circulación, el permiso por puntos, las infracciones y el cuadro de sanciones. Incluye regulación de VMP.",
-    "link_fuente": "https://drive.google.com/file/d/1LbzVV0bCkgcAbDge90_5O--uyxiHIFM2/view?usp=sharing",
-    "audio_url": "https://drive.google.com/file/d/1_GdDZ1LwsW-6Y6tQg5sqKEWJg3mn_tvK/view?usp=sharing",
-    "contenido_html": "<h3>1. Normas Generales (LSV y RGCir)</h3><p>Regulación del comportamiento en la circulación para vehículos y peatones. Se establece la obligación de no entorpecer indebidamente y no causar peligro.</p><ul><li><strong>Alcohol y Drogas:</strong> Tasas máximas (0,25 mg/l aire general; 0,15 mg/l noveles/profesionales; 0,0 mg/l menores). Presencia de drogas: Sanción muy grave (1.000€ + 6 puntos).</li><li><strong>Velocidad:</strong> Cuadros de sanciones según excesos. Delito penal al superar en 60km/h (urbana) u 80km/h (interurbana).</li><li><strong>VMP (Patinetes):</strong> Prohibición de circular por aceras, zonas peatonales, travesías, vías interurbanas, autopistas y autovías. Obligación de certificado de circulación.</li></ul><h3>2. Procedimiento Sancionador</h3><p>Clasificación de infracciones en Leves (hasta 100€), Graves (200€) y Muy Graves (500€). El sistema de Permiso por Puntos regula la pérdida de vigencia.</p><h3>3. Delitos contra la Seguridad Vial</h3><p>Artículos 379 y ss. del Código Penal: Velocidad excesiva, influencia de alcohol/drogas, conducción temeraria y conducción sin permiso.</p>",
+    "meta": "RDL 6/2015",
+    "resumen": "Normas de circulación, sanciones, carné por puntos y delitos.",
+    "link_fuente": "https://drive.google.com/file/d/1LbzVV0bCkgcAbDge90_5O--uyxiHIFM2/view?usp=drive_link",
+    "audio_url": "https://drive.google.com/file/d/1_GdDZ1LwsW-6Y6tQg5sqKEWJg3mn_tvK/view?usp=drive_link",
+    "contenido_html": "<h3>Puntos Clave</h3><ul><li>Tasa general alcohol: 0.25 mg/l aire.</li><li>Velocidad en ciudad: 30 km/h (vía un carril).</li><li>Uso de móvil: 6 puntos y 200€.</li></ul>",
     "flashcards": [
-      { "front": "¿Tasa de alcohol en aire para conductores noveles?", "back": "0,15 mg/l." },
-      { "front": "¿Tasa de alcohol en sangre para conductores profesionales?", "back": "0,30 g/l." },
-      { "front": "¿Puntos que se pierden por conducir con presencia de drogas?", "back": "6 puntos." },
-      { "front": "¿Velocidad genérica en vías urbanas de plataforma única?", "back": "20 km/h." },
-      { "front": "¿Cuándo es delito el exceso de velocidad en vía urbana?", "back": "Al superar en más de 60 km/h la permitida." },
-      { "front": "¿Cuándo es delito el exceso de velocidad en vía interurbana?", "back": "Al superar en más de 80 km/h la permitida." },
-      { "front": "¿Sanción por usar el móvil sujetándolo con la mano?", "back": "200 euros y 6 puntos." },
-      { "front": "¿Distancia lateral para adelantar ciclistas?", "back": "1,5 metros mínimo, ocupando parte o todo el carril contiguo." },
-      { "front": "¿Es obligatorio el casco en bicicleta en ciudad?", "back": "Solo para menores de 16 años (para mayores es recomendable)." },
-      { "front": "¿Plazo para pagar con descuento del 50%?", "back": "20 días naturales." },
-      { "front": "¿Quién responde por no usar el cinturón?", "back": "El autor del hecho (el pasajero si no lo lleva)." },
-      { "front": "¿Quién responde si un pasajero menor no lleva sistema de retención?", "back": "El conductor." },
-      { "front": "¿Puede un VMP ir por la acera?", "back": "No, está prohibido." },
-      { "front": "¿Tasa de alcohol para menores de edad conductores?", "back": "0,0 mg/l." },
-      { "front": "¿Caducidad de la ITV de un turismo de 5 años?", "back": "Cada 2 años." },
-      { "front": "¿Caducidad de la ITV de un turismo de más de 10 años?", "back": "Anual." },
-      { "front": "¿Sanción por no identificar al conductor (leve)?", "back": "El doble de la multa original." },
-      { "front": "¿Sanción por no identificar al conductor (grave/muy grave)?", "back": "El triple de la multa original." },
-      { "front": "¿Cuándo prescribe una infracción grave?", "back": "A los 6 meses." },
-      { "front": "¿Cuándo prescribe una infracción leve?", "back": "A los 3 meses." }
+        { "front": "¿Tasa de alcohol en aire para noveles?", "back": "0,15 mg/l." },
+        { "front": "¿Cuándo caduca la ITV de un turismo nuevo?", "back": "A los 4 años." },
+        { "front": "¿Es obligatorio el casco en bici en ciudad?", "back": "Solo para menores de 16 años." }
     ],
     "test": [
-      { "pregunta": "¿Qué vehículo tiene preferencia en una glorieta?", "respuestas": ["El que entra por la derecha", "El que circula dentro de ella", "El más rápido"], "correcta": 1 },
-      { "pregunta": "¿Se pueden llevar auriculares conduciendo?", "respuestas": ["Sí, si es para GPS", "No, está prohibido", "Solo en un oído"], "correcta": 1 },
-      { "pregunta": "¿Es obligatorio el seguro para un remolque de 600kg?", "respuestas": ["Sí", "No, le cubre el del vehículo tractor", "Solo si sale al extranjero"], "correcta": 1 },
-      { "pregunta": "¿Cuál es la velocidad máxima en autopista para un turismo?", "respuestas": ["100 km/h", "120 km/h", "130 km/h"], "correcta": 1 },
-      { "pregunta": "¿Qué indica la señal R-2 (STOP)?", "respuestas": ["Ceder el paso", "Detención obligatoria siempre", "Detención solo si vienen coches"], "correcta": 1 }
-    ]
-  },
-  {
-    "id": "seguridad-ciudadana",
-    "titulo": "Seguridad Ciudadana (Ley Mordaza)",
-    "categoria": "operativo",
-    "meta": "LO 4/2015 | Protección de la Seguridad Ciudadana",
-    "resumen": "Marco jurídico de la actuación policial en la vía pública: identificaciones, cacheos, sanciones administrativas y potestades para el mantenimiento del orden.",
-    "link_fuente": "PEGAR_AQUI_ENLACE_DRIVE_DEL_PDF",
-    "audio_url": "PEGAR_AQUI_ENLACE_DRIVE_DEL_AUDIO",
-    "contenido_html": "<h3>1. Potestades Policiales</h3><ul><li><strong>Identificación (Art. 16):</strong> Cuando existan indicios de participación en infracción o para prevenir un delito. Si no es posible identificar in situ, se puede trasladar a dependencias (máximo 6 horas).</li><li><strong>Registros Corporales (Art. 20):</strong> Cacheos externos. Deben ser por agente del mismo sexo, salvo urgencia o imposibilidad. Respeto a la dignidad.</li></ul><h3>2. Régimen Sancionador</h3><p>Las infracciones se dividen en Leves (100-600€), Graves (601-30.000€) y Muy Graves (30.001-600.000€).</p><ul><li><strong>Graves Comunes:</strong> Desobediencia/Resistencia, consumo/tenencia de drogas en vía pública, portar armas prohibidas, falta de respeto (leve/grave según caso).</li></ul>",
-    "flashcards": [
-      { "front": "¿Tiempo máximo de retención para identificación?", "back": "6 horas." },
-      { "front": "¿Es obligatorio el Libro-Registro en dependencias para identificaciones?", "back": "Sí." },
-      { "front": "¿Quién debe realizar el registro corporal externo?", "back": "Agente del mismo sexo (salvo urgencia)." },
-      { "front": "¿Es sancionable la tenencia de drogas aunque no se consuman?", "back": "Sí, en lugares públicos (Infracción Grave)." },
-      { "front": "¿Es sancionable el consumo de alcohol en la calle?", "back": "Sí, cuando perturbe la tranquilidad ciudadana (Leve)." },
-      { "front": "¿Prescripción infracciones leves LO 4/2015?", "back": "6 meses." },
-      { "front": "¿Prescripción infracciones graves LO 4/2015?", "back": "1 año." },
-      { "front": "¿Es infracción la falta de respeto a un agente?", "back": "Sí, Leve (Art. 37.4)." },
-      { "front": "¿Es infracción la desobediencia a la autoridad?", "back": "Sí, Grave (Art. 36.6)." },
-      { "front": "¿Se pueden intervenir armas reglamentarias?", "back": "Sí, si se portan en lugares prohibidos o con riesgo (ebriedad)." },
-      { "front": "¿Qué se entrega al ciudadano tras la identificación en comisaría?", "back": "Un volante acreditativo del tiempo de estancia." },
-      { "front": "¿Puede un agente requerir la identificación para prevenir un delito?", "back": "Sí, es uno de los supuestos legales." },
-      { "front": "¿Sanción por proyectar haces de luz sobre pilotos/conductores?", "back": "Infracción Muy Grave (si deslumbra)." },
-      { "front": "¿Sanción por escalar edificios públicos?", "back": "Infracción Leve." },
-      { "front": "¿Quién es el órgano competente para sancionar infracciones graves?", "back": "El Ministerio del Interior o Delegación del Gobierno." }
-    ],
-    "test": [
-      { "pregunta": "¿Cuál es el plazo de prescripción de las infracciones muy graves en la LO 4/2015?", "respuestas": ["1 año", "2 años", "3 años"], "correcta": 2 },
-      { "pregunta": "¿La negativa a identificarse constituye...?", "respuestas": ["Falta leve", "Infracción grave de desobediencia", "Delito siempre"], "correcta": 1 },
-      { "pregunta": "¿Es legal el cacheo con desnudo integral en vía pública?", "respuestas": ["Sí, si es necesario", "No, debe hacerse en lugar reservado", "Depende del agente"], "correcta": 1 }
-    ]
-  },
-  {
-    "id": "viogen",
-    "titulo": "Violencia de Género",
-    "categoria": "viogen",
-    "meta": "LO 1/2004 | Protección Integral",
-    "resumen": "Normativa integral contra la violencia de género. Protocolos de actuación policial, valoración del riesgo (VPR) y medidas de protección.",
-    "link_fuente": "PEGAR_AQUI_ENLACE_DRIVE_DEL_PDF",
-    "audio_url": "PEGAR_AQUI_ENLACE_DRIVE_DEL_AUDIO",
-    "contenido_html": "<h3>1. Definición y Ámbito</h3><p>Violencia ejercida por hombre sobre mujer con la que tiene o ha tenido relación de afectividad (con o sin convivencia). Abarca violencia física, psicológica, sexual y económica.</p><h3>2. Actuación Policial</h3><ul><li><strong>VPR (Valoración Policial del Riesgo):</strong> Obligatoria en sistema VioGén (No apreciado, Bajo, Medio, Alto, Extremo).</li><li><strong>Orden de Protección:</strong> Medida judicial que unifica protección penal y civil.</li><li><strong>Oficina de Denuncias:</strong> Atención prioritaria, privacidad, ofrecimiento de acciones y asistencia letrada inmediata.</li></ul>",
-    "flashcards": [
-      { "front": "¿Qué ley regula la violencia de género?", "back": "Ley Orgánica 1/2004." },
-      { "front": "¿Quiénes son los sujetos activos en VG?", "back": "Siempre un hombre." },
-      { "front": "¿Quiénes son los sujetos pasivos en VG?", "back": "Mujer pareja o expareja." },
-      { "front": "¿Es necesaria la convivencia para que sea VG?", "back": "No." },
-      { "front": "¿Qué es la VPR?", "back": "Valoración Policial del Riesgo." },
-      { "front": "¿Qué niveles de riesgo existen en VioGén?", "back": "No apreciado, Bajo, Medio, Alto, Extremo." },
-      { "front": "¿Qué implica el nivel 'Extremo'?", "back": "Protección permanente (24h) de la víctima." },
-      { "front": "¿Puede la víctima renunciar a la orden de protección?", "back": "Puede pedir que se retire, pero el juez decide. La protección es pública." },
-      { "front": "¿Qué es el quebrantamiento de condena?", "back": "Incumplir una orden de alejamiento (Delito)." },
-      { "front": "¿Juzgado competente para VG?", "back": "Juzgado de Violencia sobre la Mujer." }
-    ],
-    "test": [
-      { "pregunta": "¿La violencia doméstica incluye la agresión de mujer a hombre?", "respuestas": ["Sí", "No, eso es Violencia de Género", "No existe"], "correcta": 0 },
-      { "pregunta": "¿Cuál es el plazo para ratificar una orden de protección?", "respuestas": ["24 horas", "72 horas", "1 mes"], "correcta": 1 }
-    ]
-  },
-  {
-    "id": "menores",
-    "titulo": "Legislación de Menores",
-    "categoria": "menores",
-    "meta": "LO 5/2000 | Responsabilidad Penal del Menor",
-    "resumen": "Régimen jurídico aplicable a mayores de 14 y menores de 18 años por la comisión de hechos delictivos.",
-    "link_fuente": "PEGAR_AQUI_ENLACE_DRIVE_DEL_PDF",
-    "audio_url": "PEGAR_AQUI_ENLACE_DRIVE_DEL_AUDIO",
-    "contenido_html": "<h3>1. Edades Penales</h3><ul><li><strong>0-13 años:</strong> Inimputables. Se aplica protección (Código Civil).</li><li><strong>14-17 años:</strong> Ley Orgánica 5/2000 (Responsabilidad Penal del Menor).</li><li><strong>18+ años:</strong> Código Penal adulto.</li></ul><h3>2. Detención de Menores</h3><p>Plazo máximo de <strong>24 horas</strong> en sede policial. Notificación <strong>inmediata</strong> a Fiscalía de Menores y padres/tutores. Custodia separada de adultos. Derecho a Habeas Corpus.</p>",
-    "flashcards": [
-      { "front": "¿Edad mínima de responsabilidad penal?", "back": "14 años." },
-      { "front": "¿Plazo máximo detención policial menor?", "back": "24 horas." },
-      { "front": "¿A quién se notifica la detención?", "back": "Fiscalía y Padres/Tutores." },
-      { "front": "¿Dónde debe estar el menor detenido?", "back": "Dependencias separadas de adultos." },
-      { "front": "¿Puede un menor renunciar a letrado?", "back": "No, es preceptivo." }
-    ],
-    "test": [
-      { "pregunta": "¿Qué ocurre si un menor de 13 años comete un robo?", "respuestas": ["Va a la cárcel", "Se le aplica la LO 5/2000", "Es inimputable, pasa a Protección"], "correcta": 2 }
-    ]
-  },
-  {
-    "id": "drones",
-    "titulo": "UAS / Drones - Policía Local",
-    "categoria": "operativo",
-    "meta": "RD 517/2024 | Actividades NO EASA",
-    "resumen": "Procedimiento para el uso de drones por Fuerzas y Cuerpos de Seguridad. Requisitos de piloto y operadora.",
-    "link_fuente": "PEGAR_AQUI_ENLACE_DRIVE_DEL_PDF",
-    "audio_url": "PEGAR_AQUI_ENLACE_DRIVE_DEL_AUDIO",
-    "contenido_html": "<h3>1. Marco Legal</h3><p>Las operaciones policiales son 'No EASA'. Autoridad: AESA.</p><h3>2. Requisitos</h3><ul><li>Registro de Operador.</li><li>Seguro de responsabilidad civil específico aviación.</li><li>Pilotos con formación STS-ES.</li><li>Manual de Operaciones y Estudio de Seguridad.</li></ul>",
-    "flashcards": [
-      { "front": "¿Autoridad competente UAS policial?", "back": "AESA." },
-      { "front": "¿Es obligatorio el seguro para policía?", "back": "Sí." },
-      { "front": "¿Altura máxima de vuelo general?", "back": "120 metros." }
-    ],
-    "test": [
-      { "pregunta": "¿Las operaciones de policía se rigen por normativa europea EASA?", "respuestas": ["Sí, siempre", "No, son actividades No EASA", "Solo si pesan >25kg"], "correcta": 1 }
-    ]
-  },
-  {
-    "id": "policia-local",
-    "titulo": "Policía Local y FFCCS",
-    "categoria": "operativo",
-    "meta": "LO 2/86 | Funciones y Coordinación",
-    "resumen": "Ley Orgánica de Fuerzas y Cuerpos de Seguridad. Define las competencias propias de la Policía Local y su relación con CNP y GC.",
-    "link_fuente": "PEGAR_AQUI_ENLACE_DRIVE_DEL_PDF",
-    "audio_url": "PEGAR_AQUI_ENLACE_DRIVE_DEL_AUDIO",
-    "contenido_html": "<h3>Competencias Propias (Art. 53)</h3><ul><li>Proteger autoridades corporaciones locales.</li><li>Ordenación, señalización y dirección del tráfico en casco urbano.</li><li>Instruir atestados por accidentes en casco urbano.</li><li>Policía administrativa (Ordenanzas, Bandos).</li><li>Seguridad Ciudadana (colaboración).</li></ul>",
-    "flashcards": [
-      { "front": "¿Quién ejerce la jefatura de la Policía Local?", "back": "El Alcalde." },
-      { "front": "¿Ámbito de actuación territorial?", "back": "El término municipal (salvo emergencias/protección autoridades)." },
-      { "front": "¿Naturaleza del cuerpo?", "back": "Instituto armado de naturaleza civil." }
-    ],
-    "test": [
-      { "pregunta": "¿Quién instruye atestados de tráfico en casco urbano?", "respuestas": ["Guardia Civil", "Policía Nacional", "Policía Local"], "correcta": 2 }
-    ]
-  },
-  {
-    "id": "regimen-local",
-    "titulo": "Régimen Local",
-    "categoria": "admin",
-    "meta": "LBRL 7/1985 | Organización Municipal",
-    "resumen": "Organización, funcionamiento y competencias de las Entidades Locales. El Municipio, Padrón, Organización (Alcalde, Pleno, Junta de Gobierno).",
-    "link_fuente": "PEGAR_AQUI_ENLACE_DRIVE_DEL_PDF",
-    "audio_url": "PEGAR_AQUI_ENLACE_DRIVE_DEL_AUDIO",
-    "contenido_html": "<h3>1. El Municipio</h3><p>Entidad local básica. Elementos: Territorio, Población y Organización.</p><h3>2. Órganos de Gobierno</h3><ul><li><strong>Alcalde:</strong> Preside, dirige gobierno y administración.</li><li><strong>Pleno:</strong> Órgano de máxima representación política. Control y fiscalización.</li><li><strong>Junta de Gobierno Local:</strong> Asistencia al Alcalde. Obligatoria en municipios >5000 hab.</li></ul>",
-    "flashcards": [
-      { "front": "¿Quién elige al Alcalde?", "back": "Los Concejales." },
-      { "front": "¿Elementos del municipio?", "back": "Territorio, Población, Organización." },
-      { "front": "¿Es obligatorio el Padrón?", "back": "Sí, es el registro administrativo de vecinos." }
-    ],
-    "test": [
-      { "pregunta": "¿En qué municipios es obligatoria la Junta de Gobierno Local?", "respuestas": ["En todos", "En los de más de 5000 habitantes", "Solo en capitales"], "correcta": 1 }
+        {
+            "pregunta": "¿Qué vehículo tiene preferencia en una rotonda?",
+            "respuestas": ["El que entra", "El que está dentro", "El más rápido"],
+            "correcta": 1
+        },
+        {
+            "pregunta": "¿Cuál es la velocidad máxima en autopista?",
+            "respuestas": ["100 km/h", "120 km/h", "140 km/h"],
+            "correcta": 1
+        }
     ]
   }
 ]

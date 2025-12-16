@@ -3,106 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repositorio Policial - Ayuntamiento</title>
+    <title>Centro de Estudio Policial</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root { --primary: #003366; --secondary: #004488; --bg: #f4f7f6; --text: #333; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
-        .container { max-width: 1000px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 30px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .search-box input { width: 90%; padding: 12px; border: 1px solid #ccc; border-radius: 20px; font-size: 16px; margin-top: 10px;}
-        .card { background: white; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); overflow: hidden; border-left: 5px solid var(--primary); }
-        .card-header { padding: 15px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .card-header:hover { background: #f9f9f9; }
-        .card-header h2 { margin: 0; font-size: 1.1rem; color: var(--primary); }
-        .meta { font-size: 0.8em; color: #666; }
-        .card-body { display: none; padding: 0; border-top: 1px solid #eee; }
-        .card.active .card-body { display: block; }
-        .tabs { display: flex; background: #eee; }
-        .tab-btn { flex: 1; padding: 12px; border: none; background: #eee; cursor: pointer; font-weight: 600; color: #555; }
-        .tab-btn.active { background: white; border-bottom: 3px solid var(--secondary); color: var(--secondary); }
-        .tab-content { display: none; padding: 20px; }
+        :root { --primary: #003366; --secondary: #0055a5; --accent: #ffd700; --bg: #f0f2f5; --text: #333; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        
+        /* TARJETAS DE NORMAS */
+        .card { background: white; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden; }
+        .card-header { padding: 20px; background: white; border-bottom: 1px solid #eee; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .card-header h2 { margin: 0; color: var(--primary); font-size: 1.3rem; }
+        
+        /* MENU DE PESTAÑAS */
+        .tabs { display: flex; background: #f8f9fa; }
+        .tab-btn { flex: 1; padding: 15px; border: none; background: none; cursor: pointer; font-weight: 600; color: #666; transition: 0.3s; }
+        .tab-btn.active { background: white; color: var(--secondary); border-bottom: 3px solid var(--secondary); }
+        .tab-content { display: none; padding: 25px; }
         .tab-content.active { display: block; }
-        .flashcard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
-        .fc { border: 1px solid #ddd; padding: 15px; border-radius: 5px; cursor: pointer; background: #fffbe6; transition: 0.2s; }
-        .fc:hover { transform: scale(1.02); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .fc-back { display: none; color: #006600; font-weight: bold; margin-top: 10px; border-top: 1px solid #ccc; padding-top: 5px;}
-        .fc.flipped .fc-back { display: block; }
-        .quiz-item { margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .quiz-opt { padding: 5px 10px; margin: 2px 0; background: #f0f0f0; border-radius: 4px; cursor: pointer; }
-        .quiz-opt:hover { background: #e0e0e0; }
-        .btn-download { display: inline-block; padding: 10px 20px; background: var(--secondary); color: white; text-decoration: none; border-radius: 5px; margin-top: 10px; }
-        .error { color: red; padding: 20px; text-align: center; }
+
+        /* --- FLASHCARDS (ESTILO CARRUSEL) --- */
+        .fc-container { perspective: 1000px; width: 100%; max-width: 500px; height: 300px; margin: 0 auto; position: relative; }
+        .fc-card { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.6s; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 15px; }
+        .fc-card.flipped { transform: rotateY(180deg); }
+        .fc-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; text-align: center; font-size: 1.2rem; border-radius: 15px; }
+        .fc-front { background: var(--primary); color: white; }
+        .fc-back { background: white; color: var(--text); transform: rotateY(180deg); border: 2px solid var(--primary); }
+        
+        .fc-controls { text-align: center; margin-top: 20px; }
+        .fc-btn { background: var(--secondary); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; margin: 0 10px; }
+        .fc-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* --- TEST (ESTILO EXAMEN) --- */
+        .quiz-container { max-width: 600px; margin: 0 auto; }
+        .quiz-question { margin-bottom: 20px; padding: 15px; background: #fff; border: 1px solid #eee; border-radius: 8px; }
+        .quiz-opt { display: block; padding: 12px; margin: 8px 0; background: #f8f9fa; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; transition: 0.2s; }
+        .quiz-opt:hover { background: #e2e6ea; }
+        .quiz-opt.correct { background: #d4edda; border-color: #28a745; color: #155724; }
+        .quiz-opt.wrong { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+        .quiz-score { text-align: center; font-size: 1.5rem; font-weight: bold; margin-top: 20px; color: var(--secondary); display: none; }
+        
+        /* --- AUDIO --- */
+        audio { width: 100%; margin-top: 15px; border-radius: 30px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <h1><i class="fas fa-shield-alt"></i> Normativa Policial</h1>
-        <div class="search-box">
-            <input type="text" id="search" placeholder="🔍 Buscar norma, concepto, infracción..." onkeyup="filtrar()">
-        </div>
-    </header>
-    <div id="contenido">Cargando base de datos...</div>
+    <div style="text-align:center; margin-bottom:30px;">
+        <h1><i class="fas fa-university"></i> Academia Digital Policial</h1>
+        <input type="text" id="search" placeholder="🔍 Buscar norma..." onkeyup="render()" style="padding:10px; width:80%; border-radius:20px; border:1px solid #ccc;">
+    </div>
+
+    <div id="app">Cargando datos...</div>
 </div>
 
 <script>
-    fetch('database.json?v=' + new Date().getTime())
-    .then(r => r.json())
-    .then(data => {
-        const div = document.getElementById('contenido');
-        div.innerHTML = '';
-        data.forEach((item, i) => {
-            let fcHtml = item.flashcards.map(f => `<div class="fc" onclick="this.classList.toggle('flipped')"><strong>❓ ${f.front}</strong><div class="fc-back">💡 ${f.back}</div></div>`).join('');
-            let testHtml = item.test.map(t => {
-                let opts = t.respuestas.map((r, idx) => `<div class="quiz-opt" onclick="check(this, ${idx === t.correcta})">${r}</div>`).join('');
-                return `<div class="quiz-item"><p><strong>${t.pregunta}</strong></p>${opts}</div>`;
-            }).join('');
+    let BBDD = [];
 
-            div.innerHTML += `
-            <div class="card">
-                <div class="card-header" onclick="this.parentElement.classList.toggle('active')">
-                    <div><h2>${item.titulo}</h2><div class="meta">${item.meta}</div></div>
+    // 1. CARGA DE DATOS
+    fetch('database.json?v=' + Date.now())
+        .then(r => r.json())
+        .then(data => {
+            BBDD = data;
+            render();
+        })
+        .catch(e => document.getElementById('app').innerHTML = "Error cargando database.json");
+
+    // 2. CONVERTIDOR DE ENLACES DRIVE (EL TRUCO MÁGICO)
+    function fixDriveLink(link) {
+        if (!link) return "";
+        if (link.includes("drive.google.com")) {
+            // Extrae el ID del archivo y crea un enlace directo de descarga/streaming
+            const id = link.match(/[-\w]{25,}/);
+            if (id) return `https://drive.google.com/uc?export=download&id=${id[0]}`;
+        }
+        return link; // Si no es de Drive, lo devuelve tal cual
+    }
+
+    // 3. RENDERIZADO
+    function render() {
+        const term = document.getElementById('search').value.toLowerCase();
+        const app = document.getElementById('app');
+        app.innerHTML = '';
+
+        BBDD.forEach((item, idx) => {
+            if (!item.titulo.toLowerCase().includes(term)) return;
+
+            // Preparar HTML del Test
+            let quizHTML = item.test.map((q, qIdx) => `
+                <div class="quiz-question" id="q-${idx}-${qIdx}">
+                    <strong>${qIdx + 1}. ${q.pregunta}</strong>
+                    <div class="opts">
+                        ${q.respuestas.map((r, rIdx) => `
+                            <div class="quiz-opt" onclick="answerQuiz(${idx}, ${qIdx}, ${rIdx}, ${q.correcta}, this)">${r}</div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+            quizHTML += `<div id="score-${idx}" class="quiz-score"></div>`;
+
+            // Preparar HTML de Flashcards (Solo la primera visible)
+            let fcHTML = `
+                <div class="fc-container" id="fc-cont-${idx}">
+                    <div class="fc-card" onclick="this.classList.toggle('flipped')" id="fc-card-${idx}">
+                        <div class="fc-face fc-front" id="fc-front-${idx}">${item.flashcards[0].front}</div>
+                        <div class="fc-face fc-back" id="fc-back-${idx}">${item.flashcards[0].back}</div>
+                    </div>
+                </div>
+                <div class="fc-controls">
+                    <button class="fc-btn" onclick="moveCard(${idx}, -1)">❮ Anterior</button>
+                    <span id="fc-count-${idx}">1 / ${item.flashcards.length}</span>
+                    <button class="fc-btn" onclick="moveCard(${idx}, 1)">Siguiente ❯</button>
+                </div>
+            `;
+
+            // HTML Principal
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <div class="card-header" onclick="toggleBody(this)">
+                    <h2>${item.titulo}</h2>
                     <i class="fas fa-chevron-down"></i>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="display:none">
                     <div class="tabs">
-                        <button class="tab-btn active" onclick="openTab(event, 'doc-${i}')">Documento</button>
-                        <button class="tab-btn" onclick="openTab(event, 'fc-${i}')">Estudio (${item.flashcards.length})</button>
-                        <button class="tab-btn" onclick="openTab(event, 'qz-${i}')">Test</button>
+                        <button class="tab-btn active" onclick="openTab(event, 'doc-${idx}')">Norma</button>
+                        <button class="tab-btn" onclick="openTab(event, 'fc-${idx}')">Estudio</button>
+                        <button class="tab-btn" onclick="openTab(event, 'test-${idx}')">Test</button>
+                        <button class="tab-btn" onclick="openTab(event, 'av-${idx}')">Audio</button>
                     </div>
-                    <div id="doc-${i}" class="tab-content active">
-                        <div style="background:#eef; padding:10px; border-radius:5px; margin-bottom:15px;"><strong>Resumen:</strong> ${item.resumen}</div>
+                    
+                    <div id="doc-${idx}" class="tab-content active">
                         ${item.contenido_html}
-                        <hr>
-                        <h4>Archivos:</h4>
-                        ${item.audio_url ? `<p>🎧 Audio: <audio controls src="${item.audio_url}" style="vertical-align:middle; width:80%"></audio></p>` : ''}
-                        ${item.link_fuente ? `<a href="${item.link_fuente}" class="btn-download" target="_blank">📄 Descargar PDF Oficial</a>` : ''}
+                        <br><br>
+                        ${item.link_fuente ? `<a href="${item.link_fuente}" target="_blank" style="background:#ddd; padding:10px; border-radius:5px; text-decoration:none; color:#333;">📄 Ver PDF Original</a>` : ''}
                     </div>
-                    <div id="fc-${i}" class="tab-content"><div class="flashcard-grid">${fcHtml}</div></div>
-                    <div id="qz-${i}" class="tab-content">${testHtml}</div>
+
+                    <div id="fc-${idx}" class="tab-content">
+                        ${fcHTML}
+                        <script>window['fcIndex_${idx}'] = 0;</script>
+                    </div>
+
+                    <div id="test-${idx}" class="tab-content">
+                        ${quizHTML}
+                        <script>window['score_${idx}'] = 0; window['answered_${idx}'] = 0;</script>
+                    </div>
+
+                    <div id="av-${idx}" class="tab-content">
+                        <h3>Audio Resumen</h3>
+                        <audio controls>
+                            <source src="${fixDriveLink(item.audio_url)}" type="audio/mpeg">
+                            Tu navegador no soporta el audio.
+                        </audio>
+                    </div>
                 </div>
-            </div>`;
+            `;
+            app.appendChild(card);
+            
+            // Inicializar contadores
+            window[`fcIndex_${idx}`] = 0;
+            window[`score_${idx}`] = 0;
+            window[`answered_${idx}`] = 0;
         });
-    })
-    .catch(e => document.getElementById('contenido').innerHTML = '<div class="error">⚠️ No se encuentra el archivo <strong>database.json</strong> o tiene errores de formato.</div>');
+    }
+
+    // --- FUNCIONES INTERACTIVAS ---
+
+    function toggleBody(header) {
+        const body = header.nextElementSibling;
+        body.style.display = body.style.display === 'none' ? 'block' : 'none';
+    }
 
     function openTab(e, id) {
-        let p = e.target.closest('.card-body');
-        p.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-        p.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
+        const parent = e.target.closest('.card-body');
+        parent.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+        parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).style.display = 'block';
         e.target.classList.add('active');
     }
-    function check(el, ok) {
-        el.style.background = ok ? '#d4edda' : '#f8d7da';
-        el.innerHTML += ok ? ' ✅' : ' ❌';
+
+    // FLASHCARDS LOGIC
+    function moveCard(normaIdx, direction) {
+        const cards = BBDD[normaIdx].flashcards;
+        let current = window[`fcIndex_${normaIdx}`];
+        let next = current + direction;
+
+        if (next < 0) next = cards.length - 1;
+        if (next >= cards.length) next = 0;
+
+        window[`fcIndex_${normaIdx}`] = next;
+
+        // Update UI
+        const cardEl = document.getElementById(`fc-card-${normaIdx}`);
+        cardEl.classList.remove('flipped'); // Reset flip
+        
+        setTimeout(() => {
+            document.getElementById(`fc-front-${normaIdx}`).innerText = cards[next].front;
+            document.getElementById(`fc-back-${normaIdx}`).innerText = cards[next].back;
+            document.getElementById(`fc-count-${normaIdx}`).innerText = `${next + 1} / ${cards.length}`;
+        }, 200);
     }
-    function filtrar() {
-        let q = document.getElementById('search').value.toLowerCase();
-        document.querySelectorAll('.card').forEach(c => c.style.display = c.innerText.toLowerCase().includes(q) ? 'block' : 'none');
+
+    // TEST LOGIC
+    function answerQuiz(normaIdx, qIdx, rIdx, correctIdx, btn) {
+        const parent = document.getElementById(`q-${normaIdx}-${qIdx}`);
+        if (parent.classList.contains('answered')) return; // Prevent retry
+
+        parent.classList.add('answered');
+        const opts = parent.getElementsByClassName('quiz-opt');
+
+        if (rIdx === correctIdx) {
+            btn.classList.add('correct');
+            window[`score_${normaIdx}`]++;
+        } else {
+            btn.classList.add('wrong');
+            opts[correctIdx].classList.add('correct'); // Show correct one
+        }
+
+        // Check completion
+        window[`answered_${normaIdx}`]++;
+        const total = BBDD[normaIdx].test.length;
+        
+        if (window[`answered_${normaIdx}`] === total) {
+            const scoreDiv = document.getElementById(`score-${normaIdx}`);
+            const score = window[`score_${normaIdx}`];
+            scoreDiv.style.display = 'block';
+            scoreDiv.innerText = `Resultado Final: ${score} / ${total}`;
+            if(score >= total/2) scoreDiv.style.color = 'green';
+            else scoreDiv.style.color = 'red';
+        }
     }
 </script>
+
 </body>
 </html>

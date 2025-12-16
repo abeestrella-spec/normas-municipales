@@ -6,9 +6,9 @@
     <title>Normativa y Procedimientos - Policía Local</title>
     <style>
         :root {
-            --primary: #003366; /* Azul Institucional */
+            --primary: #003366; /* Azul Institucional Policía */
             --secondary: #0055a5;
-            --accent: #eebb00; /* Toque de color alerta/destacado */
+            --accent: #eebb00; /* Amarillo Alerta */
             --bg: #f4f7f6;
             --text: #333;
         }
@@ -24,64 +24,65 @@
         .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
 
         /* BARRA DE BÚSQUEDA */
-        .search-box { position: sticky; top: 20px; z-index: 100; margin-bottom: 30px; }
+        .search-box { position: sticky; top: 10px; z-index: 100; margin-bottom: 30px; }
         .search-box input {
             width: 100%; padding: 15px 20px; font-size: 16px; border: none; border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.3s;
         }
-        .search-box input:focus { outline: none; box-shadow: 0 6px 20px rgba(0,51,102,0.3); transform: scale(1.01); }
+        .search-box input:focus { outline: none; box-shadow: 0 6px 20px rgba(0,51,102,0.4); transform: scale(1.01); }
 
         /* TARJETAS DE NORMAS */
         .norma-card { 
             background: white; border-radius: 8px; margin-bottom: 20px; overflow: hidden; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.3s; border-left: 5px solid var(--secondary);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: 0.3s; border-left: 6px solid var(--secondary);
         }
-        .norma-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .norma-card:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         
         /* CABECERA DE LA TARJETA (TÍTULO) */
         .norma-header { 
             padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; 
             background: white;
         }
-        .norma-header h2 { margin: 0; font-size: 1.2rem; color: var(--primary); }
+        .norma-header h2 { margin: 0; font-size: 1.3rem; color: var(--primary); }
         .norma-meta { font-size: 0.85rem; color: #666; margin-top: 5px; }
-        .tags { display: flex; gap: 5px; margin-top: 5px; }
-        .tag { background: #eef2f5; color: #555; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
-        .tag.blue { background: #e3f2fd; color: #1565c0; }
-        .tag.red { background: #ffebee; color: #c62828; }
-        .tag.green { background: #e8f5e9; color: #2e7d32; }
+        .tags { display: flex; gap: 5px; margin-top: 8px; flex-wrap: wrap; }
+        .tag { background: #eef2f5; color: #555; padding: 3px 10px; border-radius: 15px; font-size: 0.75rem; font-weight: bold; border: 1px solid #ddd;}
+        .tag.blue { background: #e3f2fd; color: #1565c0; border-color: #bbdefb; }
+        .tag.red { background: #ffebee; color: #c62828; border-color: #ffcdd2; }
+        .tag.green { background: #e8f5e9; color: #2e7d32; border-color: #c8e6c9; }
 
         /* CONTENIDO DESPLEGABLE */
         .norma-content { 
-            display: none; padding: 0 20px 20px; border-top: 1px solid #eee; background-color: #fafafa; 
+            display: none; padding: 0 25px 25px; border-top: 1px solid #eee; background-color: #fff; 
         }
-        .norma-content h3 { color: var(--secondary); border-bottom: 2px solid #ddd; padding-bottom: 5px; margin-top: 20px; }
+        .norma-content h3 { color: var(--secondary); border-bottom: 2px solid #eee; padding-bottom: 8px; margin-top: 25px; font-size: 1.1rem; }
+        .norma-content p { margin-bottom: 15px; text-align: justify; }
         .norma-content ul { padding-left: 20px; }
         .norma-content li { margin-bottom: 8px; }
         .norma-content strong { color: #000; }
 
         /* ICONO DESPLEGAR */
-        .arrow { font-size: 1.2rem; transition: 0.3s; color: var(--secondary); }
+        .arrow { font-size: 1.5rem; transition: 0.3s; color: var(--secondary); margin-left: 15px;}
         .norma-card.active .arrow { transform: rotate(180deg); }
-        .norma-card.active .norma-content { display: block; animation: fadeIn 0.3s; }
+        .norma-card.active .norma-content { display: block; animation: fadeIn 0.4s; }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* FOOTER */
-        footer { text-align: center; margin-top: 50px; padding: 20px; font-size: 0.8rem; color: #888; border-top: 1px solid #ddd; }
+        footer { text-align: center; margin-top: 50px; padding: 30px; font-size: 0.85rem; color: #888; border-top: 1px solid #ddd; background: #fff;}
     </style>
 </head>
 <body>
 
 <header>
     <h1>Repositorio de Procedimientos</h1>
-    <p>Policía Local - Ayuntamiento | Uso Interno</p>
+    <p>Policía Local - Ayuntamiento | Uso Interno | 8n8 & Jules System</p>
 </header>
 
 <div class="container">
     
     <div class="search-box">
-        <input type="text" id="searchInput" onkeyup="filtrar()" placeholder="🔍 Buscar procedimiento, palabra clave o categoría...">
+        <input type="text" id="searchInput" onkeyup="filtrar()" placeholder="🔍 Escribe para buscar (ej: drones, violencia, menores, tráfico)...">
     </div>
 
     <div id="listaNormas">
@@ -90,38 +91,39 @@
             <div class="norma-header" onclick="toggleCard(this)">
                 <div>
                     <h2>PNT Operaciones con Drones (UAS)</h2>
-                    <div class="norma-meta">Procedimiento Normalizado de Trabajo | Seguridad Aérea</div>
+                    <div class="norma-meta">Procedimiento Normalizado de Trabajo | Unidad de Vigilancia Aérea</div>
                     <div class="tags">
                         <span class="tag blue">TECNOLOGÍA</span>
                         <span class="tag red">OPERATIVO</span>
+                        <span class="tag">AESA</span>
                     </div>
                 </div>
                 <span class="arrow">▼</span>
             </div>
             <div class="norma-content">
                 <h3>I. Marco Legal y Competencias</h3>
-                <p>El uso de UAS (drones) por la Policía Local se enmarca en las "actividades o servicios no EASA" (policía, aduanas, etc.), excluidas del reglamento base europeo. La autoridad competente es <strong>AESA</strong>.</p>
+                <p>El uso de sistemas de aeronaves no tripuladas (UAS) por parte de la Policía Local se enmarca en las <strong>"actividades o servicios no EASA"</strong> (policía, búsqueda y salvamento, lucha contra incendios), excluidas del Reglamento Base de EASA. La autoridad competente es la <strong>Agencia Estatal de Seguridad Aérea (AESA)</strong>.</p>
+                
+                <h3>II. Requisitos Operativos (RD 517/2024)</h3>
                 <ul>
-                    <li><strong>Real Decreto 517/2024:</strong> Regula el régimen jurídico civil aplicable.</li>
-                    <li><strong>Responsabilidad:</strong> El Ayuntamiento es el operador responsable de garantizar la seguridad y el cumplimiento normativo.</li>
+                    <li><strong>Registro de Operador:</strong> Obligatorio el registro en AESA como operador de UAS.</li>
+                    <li><strong>Seguro:</strong> Se debe disponer de una póliza de seguro de responsabilidad civil específica para aviación.</li>
+                    <li><strong>Pilotos:</strong> Formación teórica y práctica obligatoria (STS-ES o formación específica de cuerpos de seguridad).</li>
+                    <li><strong>Identificación:</strong> La aeronave debe llevar placa identificativa ignífuga con el número de registro.</li>
                 </ul>
 
-                <h3>II. Requisitos para Operar</h3>
-                <p>Para volar drones como Policía Local es obligatorio:</p>
-                <ol>
-                    <li><strong>Registro de Operador:</strong> Estar registrado en AESA.</li>
-                    <li><strong>Seguro:</strong> Póliza de responsabilidad civil específica para aviación.</li>
-                    <li><strong>Pilotos:</strong> Deben tener la formación teórica y práctica (STS o específica).</li>
-                    <li><strong>Manual de Operaciones:</strong> Documento aprobado internamente que defina cómo se vuela.</li>
-                </ol>
-
-                <h3>III. Procedimiento de Vuelo (Paso a Paso)</h3>
-                <p><strong>Fase Previa:</strong> Verificar zona en ENAIRE Drones (zonas restringidas, CTR, zonas ZEPA). Solicitar permisos si es necesario.</p>
-                <p><strong>Durante el Vuelo:</strong></p>
+                <h3>III. Procedimiento de Vuelo (Checklist)</h3>
+                <p><strong>1. Fase Previa (Despacho de Vuelo):</strong></p>
                 <ul>
-                    <li>Mantener línea de vista (VLOS) salvo autorización BVLOS.</li>
-                    <li>No sobrevolar aglomeraciones de personas sin medidas de mitigación.</li>
-                    <li>Respetar la privacidad (Ley Protección de Datos).</li>
+                    <li>Consultar ENAIRE Drones para verificar zonas geográficas (Zonas prohibidas, restringidas, CTR, ZEPA).</li>
+                    <li>Solicitar permisos ATC si se opera en espacio aéreo controlado.</li>
+                    <li>Verificar meteorología (Viento, visibilidad).</li>
+                </ul>
+                <p><strong>2. Ejecución:</strong></p>
+                <ul>
+                    <li>Mantener siempre línea de vista (VLOS) salvo autorización expresa BVLOS.</li>
+                    <li>No sobrevolar concentraciones de personas sin las medidas de mitigación del estudio de seguridad (SORA/PDRA).</li>
+                    <li>Respetar la Ley de Protección de Datos (LOPD) en la captación de imágenes.</li>
                 </ul>
             </div>
         </div>
@@ -139,11 +141,12 @@
                 <span class="arrow">▼</span>
             </div>
             <div class="norma-content">
-                <p><em>[Aquí pegarás el resumen del Código de Tráfico]</em></p>
+                <p><em>(Espacio reservado para el contenido del Código de Tráfico. Aquí se incluirán los procedimientos de denuncia, inmovilización de vehículos y delitos contra la seguridad vial).</em></p>
+                <h3>Puntos Clave</h3>
                 <ul>
-                    <li>Procedimientos sancionadores de tráfico.</li>
-                    <li>Regulación de vehículos de movilidad personal (VMP).</li>
-                    <li>Actuación en accidentes de tráfico y atestados.</li>
+                    <li>Procedimiento sancionador abreviado y ordinario.</li>
+                    <li>Uso de dispositivos de movilidad personal (VMP - Patinetes).</li>
+                    <li>Controles de alcoholemia y drogas: Protocolo de actuación.</li>
                 </ul>
             </div>
         </div>
@@ -151,22 +154,24 @@
         <div class="norma-card">
             <div class="norma-header" onclick="toggleCard(this)">
                 <div>
-                    <h2>Protocolo Violencia de Género y Doméstica</h2>
-                    <div class="norma-meta">Protección de Víctimas | VioGén</div>
+                    <h2>Protocolo VioGén y Violencia Doméstica</h2>
+                    <div class="norma-meta">Protección de Víctimas | Ley Orgánica 1/2004</div>
                     <div class="tags">
                         <span class="tag red">URGENTE</span>
                         <span class="tag blue">JUDICIAL</span>
+                        <span class="tag">PROTECCIÓN</span>
                     </div>
                 </div>
                 <span class="arrow">▼</span>
             </div>
             <div class="norma-content">
-                <h3>Actuación Policial</h3>
-                <p>Protocolo de actuación ante avisos de violencia de género. Valoración del riesgo policial.</p>
+                <h3>Actuación Policial Inmediata</h3>
+                <p>Protocolo de actuación ante avisos de violencia de género. Valoración del riesgo policial (VPR).</p>
                 <ul>
-                    <li>Medidas de protección y alejamiento.</li>
+                    <li>Atención preferente y acompañamiento a la víctima.</li>
+                    <li>Grabación de datos en sistema VioGén.</li>
                     <li>Coordinación con Guardia Civil / Policía Nacional.</li>
-                    <li>Atención y acompañamiento a la víctima.</li>
+                    <li>Medidas de alejamiento y control del agresor.</li>
                 </ul>
             </div>
         </div>
@@ -186,9 +191,9 @@
             <div class="norma-content">
                 <p>Procedimientos relacionados con la Ley Orgánica de Responsabilidad Penal de los Menores.</p>
                 <ul>
-                    <li>Actuación con menores infractores.</li>
-                    <li>Situaciones de desamparo o riesgo.</li>
-                    <li>Absentismo escolar.</li>
+                    <li>Actuación con menores infractores (detención y custodia).</li>
+                    <li>Situaciones de desamparo o riesgo (absentismo escolar).</li>
+                    <li>Venta de alcohol a menores y locales de ocio.</li>
                 </ul>
             </div>
         </div>
@@ -197,18 +202,15 @@
 </div>
 
 <footer>
-    <p>Repositorio generado con Asistencia IA (Gemini & n8n) para DTIC Municipal.</p>
-    <p>© 2024 Ayuntamiento</p>
+    <p>Repositorio generado con Asistencia IA (8n8, Jules & Gemini) para DTIC Municipal.</p>
+    <p>© 2024 Ayuntamiento - Documentación Interna</p>
 </footer>
 
 <script>
     function toggleCard(header) {
-        // Cierra los demás (opcional, si quieres efecto acordeón estricto)
-        // var allCards = document.querySelectorAll('.norma-card');
-        // allCards.forEach(c => { if(c !== header.parentElement) c.classList.remove('active'); });
-
-        // Abre o cierra el actual
+        // Seleccionamos la tarjeta padre
         var card = header.parentElement;
+        // Alternamos la clase 'active' para abrir/cerrar
         card.classList.toggle('active');
     }
 
@@ -219,6 +221,7 @@
         var tarjetas = lista.getElementsByClassName('norma-card');
 
         for (var i = 0; i < tarjetas.length; i++) {
+            // Buscamos texto en el título, las etiquetas y el contenido oculto
             var textoTitulo = tarjetas[i].querySelector('h2').innerText;
             var textoTags = tarjetas[i].querySelector('.tags').innerText;
             var textoContenido = tarjetas[i].querySelector('.norma-content').innerText;

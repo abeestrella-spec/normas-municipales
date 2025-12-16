@@ -1,29 +1,30 @@
 [
   {
     "id": "trafico",
-    "titulo": "Código de Tráfico y Seguridad Vial",
-    "categoria": "trafico",
+    "titulo": "Tráfico y Seguridad Vial",
+    "categoria": "Trafico",
+    "resumen": "Ley de Seguridad Vial, Reglamento General de Circulación y Cuadro de Sanciones.",
     "meta": "RDL 6/2015",
-    "resumen": "Normas de circulación, sanciones, carné por puntos y delitos.",
     "link_fuente": "https://drive.google.com/file/d/1LbzVV0bCkgcAbDge90_5O--uyxiHIFM2/view?usp=drive_link",
     "audio_url": "https://drive.google.com/file/d/1_GdDZ1LwsW-6Y6tQg5sqKEWJg3mn_tvK/view?usp=drive_link",
-    "contenido_html": "<h3>Puntos Clave</h3><ul><li>Tasa general alcohol: 0.25 mg/l aire.</li><li>Velocidad en ciudad: 30 km/h (vía un carril).</li><li>Uso de móvil: 6 puntos y 200€.</li></ul>",
+    "contenido_html": "<h3>Puntos Clave</h3><ul><li>Tasa Alcohol Aire: 0.25 mg/l (General) / 0.15 mg/l (Novel/Pro).</li><li>Delito Velocidad: +60 km/h (Urbana) / +80 km/h (Interurbana).</li><li>Prescripción Infracciones: Leves (3 meses), Graves (6 meses).</li></ul>",
     "flashcards": [
-        { "front": "¿Tasa de alcohol en aire para noveles?", "back": "0,15 mg/l." },
-        { "front": "¿Cuándo caduca la ITV de un turismo nuevo?", "back": "A los 4 años." },
-        { "front": "¿Es obligatorio el casco en bici en ciudad?", "back": "Solo para menores de 16 años." }
+      { "front": "¿Tasa alcohol aire conductores noveles?", "back": "0.15 mg/l" },
+      { "front": "¿Plazo para pagar con 50% descuento?", "back": "20 días naturales" },
+      { "front": "¿Puntos por conducir con drogas?", "back": "6 puntos" },
+      { "front": "¿Distancia lateral adelantamiento ciclista?", "back": "1.5 metros" }
     ],
     "test": [
-        {
-            "pregunta": "¿Qué vehículo tiene preferencia en una rotonda?",
-            "respuestas": ["El que entra", "El que está dentro", "El más rápido"],
-            "correcta": 1
-        },
-        {
-            "pregunta": "¿Cuál es la velocidad máxima en autopista?",
-            "respuestas": ["100 km/h", "120 km/h", "140 km/h"],
-            "correcta": 1
-        }
+      {
+        "pregunta": "¿Qué indica la señal R-2 (STOP)?",
+        "respuestas": ["Ceder el paso", "Detención obligatoria siempre", "Detención solo si vienen coches"],
+        "correcta": 1
+      },
+      {
+        "pregunta": "¿Cuál es la velocidad máxima en autopista para turismos?",
+        "respuestas": ["100 km/h", "120 km/h", "130 km/h"],
+        "correcta": 1
+      }
     ]
   }
 ]

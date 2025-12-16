@@ -1,0 +1,135 @@
+[
+  {
+    "id": "trafico",
+    "titulo": "Tráfico y Seguridad Vial (RDL 6/2015)",
+    "categoria": "trafico",
+    "meta": "Real Decreto Legislativo 6/2015 | BOE-020",
+    "resumen": "Ley fundamental que regula la circulación, el permiso por puntos, las infracciones y el cuadro de sanciones. Incluye regulación de VMP.",
+    "link_fuente": "norma_trafico.pdf",
+    "audio_url": "audio_trafico.mp3",
+    "contenido_html": "<h3>Normas Clave</h3><ul><li><strong>Tasas de Alcohol:</strong> General 0.25 mg/l (aire), Profesionales/Noveles 0.15 mg/l. Menores de edad: 0.0 mg/l.</li><li><strong>Drogas:</strong> Tolerancia cero a la presencia en el organismo. Sanción muy grave (1.000€ + 6 puntos).</li><li><strong>Velocidad:</strong> Delito penal al superar en 60 km/h (urbana) o 80 km/h (interurbana) el límite.</li><li><strong>VMP (Patinetes):</strong> Prohibido aceras, zonas peatonales, travesías, autovías. Casco obligatorio según ordenanza.</li></ul>",
+    "flashcards": [
+      { "front": "¿Tasa alcohol aire conductores generales?", "back": "0.25 mg/l" },
+      { "front": "¿Plazo prescripción infracciones leves?", "back": "3 meses" },
+      { "front": "¿Puntos por uso manual de móvil?", "back": "6 puntos" },
+      { "front": "¿Distancia lateral adelantamiento ciclistas?", "back": "1.5 metros mínimo" },
+      { "front": "¿Velocidad máxima vías plataforma única?", "back": "20 km/h" }
+    ],
+    "test": [
+      { "pregunta": "¿Cuándo caduca la ITV de un turismo de 6 años?", "respuestas": ["Cada año", "Cada 2 años", "Cada 4 años"], "correcta": 1 },
+      { "pregunta": "¿Es obligatorio el seguro para un remolque ligero (<750kg)?", "respuestas": ["Sí, siempre", "No, le cubre el del coche", "Solo si sale al extranjero"], "correcta": 1 }
+    ]
+  },
+  {
+    "id": "seguridad",
+    "titulo": "Seguridad Ciudadana (Ley 4/2015)",
+    "categoria": "operativo",
+    "meta": "Ley Orgánica 4/2015 | Protección de la Seguridad Ciudadana",
+    "resumen": "Regulación de las potestades policiales (identificación, cacheos) y régimen sancionador administrativo (Drogas, Desobediencia, Armas).",
+    "link_fuente": "norma_seguridad.pdf",
+    "audio_url": "audio_seguridad.mp3",
+    "contenido_html": "<h3>Actuaciones Policiales (Art. 16-20)</h3><ul><li><strong>Identificación:</strong> Cuando existan indicios de infracción o para prevenir delitos. Retención máxima para identificar: 6 horas.</li><li><strong>Registros Corporales (Cacheos):</strong> Por agente del mismo sexo (salvo urgencia), en lugar reservado si exige desnudo parcial.</li><li><strong>Sanciones Frecuentes:</strong> Consumo/Tenencia drogas (Grave), Falta de Respeto (Leve), Desobediencia (Grave).</li></ul>",
+    "flashcards": [
+      { "front": "¿Tiempo máximo retención identificación?", "back": "6 horas" },
+      { "front": "¿Es sancionable la tenencia de droga sin consumo?", "back": "Sí, infracción Grave (Art 36.16)" },
+      { "front": "¿Quién puede realizar un cacheo?", "back": "Agente del mismo sexo, salvo urgencia vital" },
+      { "front": "¿Prescripción infracciones graves?", "back": "1 año" }
+    ],
+    "test": [
+      { "pregunta": "¿La falta de respeto a un agente es...?", "respuestas": ["Delito leve", "Infracción administrativa Leve", "Infracción Grave"], "correcta": 1 },
+      { "pregunta": "¿Se puede ocupar un inmueble sin título?", "respuestas": ["Es un asunto civil", "Infracción Leve si no es delito", "No es asunto policial"], "correcta": 1 }
+    ]
+  },
+  {
+    "id": "viogen",
+    "titulo": "Violencia de Género (VioGén)",
+    "categoria": "viogen",
+    "meta": "LO 1/2004 | Instrucción SES 4/2019",
+    "resumen": "Protocolo de actuación policial con víctimas de violencia de género, valoración del riesgo (VPR) y medidas de protección.",
+    "link_fuente": "norma_viogen.pdf",
+    "audio_url": "audio_viogen.mp3",
+    "contenido_html": "<h3>Protocolo de Actuación</h3><p>Tras la denuncia, es obligatorio realizar la <strong>VPR (Valoración Policial del Riesgo)</strong> en el sistema VioGén.</p><ul><li><strong>Niveles de Riesgo:</strong> No Apreciado, Bajo, Medio, Alto, Extremo.</li><li><strong>Riesgo Extremo:</strong> Vigilancia permanente de la víctima hasta que el agresor ingrese en prisión o haya medidas judiciales.</li><li><strong>Quebrantamiento:</strong> Incumplir una orden de alejamiento es siempre Delito, se procede a la detención.</li></ul>",
+    "flashcards": [
+      { "front": "¿Sujeto activo en Violencia de Género?", "back": "Hombre (pareja o expareja)" },
+      { "front": "¿Es necesaria la convivencia?", "back": "No" },
+      { "front": "¿Qué es la VPR?", "back": "Valoración Policial del Riesgo" },
+      { "front": "¿Plazo para ratificar orden protección?", "back": "72 horas máximo" }
+    ],
+    "test": [
+      { "pregunta": "¿Puede la víctima perdonar y anular la orden de alejamiento?", "respuestas": ["Sí, retirando la denuncia", "No, es una medida judicial pública", "Solo ante notario"], "correcta": 1 }
+    ]
+  },
+  {
+    "id": "menores",
+    "titulo": "Ley del Menor (LO 5/2000)",
+    "categoria": "menores",
+    "meta": "Responsabilidad Penal del Menor",
+    "resumen": "Actuación con menores infractores (14-18 años) y menores inimputables (<14). Detención y derechos.",
+    "link_fuente": "norma_menores.pdf",
+    "audio_url": "audio_menores.mp3",
+    "contenido_html": "<h3>Detención de Menores</h3><ul><li><strong>Edad Penal:</strong> De 14 a 18 años. Los menores de 14 son inimputables (Protección).</li><li><strong>Plazo Detención:</strong> Máximo <strong>24 horas</strong> en sede policial.</li><li><strong>Notificación:</strong> Inmediata a Fiscalía de Menores y Padres/Tutores.</li><li><strong>Custodia:</strong> Siempre separados de detenidos adultos.</li></ul>",
+    "flashcards": [
+      { "front": "¿Edad mínima responsabilidad penal?", "back": "14 años" },
+      { "front": "¿Plazo máximo detención policial?", "back": "24 horas" },
+      { "front": "¿A quién se avisa obligatoriamente?", "back": "Fiscalía y Padres" },
+      { "front": "¿Necesita abogado un menor?", "back": "Sí, siempre, no puede renunciar" }
+    ],
+    "test": [
+      { "pregunta": "¿Qué pasa si un niño de 12 años comete un robo?", "respuestas": ["Se le detiene", "Se da cuenta a Fiscalía y a Protección de Menores (Inimputable)", "Juicio rápido"], "correcta": 1 }
+    ]
+  },
+  {
+    "id": "drones",
+    "titulo": "Drones / UAS (PNT Policial)",
+    "categoria": "operativo",
+    "meta": "RD 517/2024 | Uso No EASA",
+    "resumen": "Normativa para el uso de drones por Fuerzas y Cuerpos de Seguridad. Requisitos de piloto y operadora.",
+    "link_fuente": "norma_drones.pdf",
+    "audio_url": "audio_drones.mp3",
+    "contenido_html": "<h3>Operativa Policial</h3><p>Las operaciones de policía son 'No EASA'. Se rigen por el RD 517/2024.</p><ul><li><strong>Requisitos:</strong> Registro de operador en AESA, Seguro de aviación, Pilotos formados (STS-ES).</li><li><strong>Vuelo Urbano:</strong> Permitido con autorización y medidas de seguridad (paracaídas, limitador de impacto).</li><li><strong>Privacidad:</strong> Respeto estricto a la LOPD.</li></ul>",
+    "flashcards": [
+      { "front": "¿Autoridad competente?", "back": "AESA" },
+      { "front": "¿Es obligatorio el seguro?", "back": "Sí, específico de aeronáutica" },
+      { "front": "¿Se puede volar sobre personas?", "back": "Solo con medidas de mitigación y autorización" }
+    ],
+    "test": [
+      { "pregunta": "¿Qué normativa aplica a la policía?", "respuestas": ["Reglamento Europeo EASA", "RD 517/2024 (No EASA)", "Ley de Tráfico"], "correcta": 1 }
+    ]
+  },
+  {
+    "id": "policia",
+    "titulo": "Ley de Fuerzas y Cuerpos de Seguridad",
+    "categoria": "policia",
+    "meta": "LO 2/86 | Competencias",
+    "resumen": "Funciones y competencias de la Policía Local, Nacional y Guardia Civil. Coordinación y principios básicos de actuación.",
+    "link_fuente": "norma_policia.pdf",
+    "audio_url": "audio_policia.mp3",
+    "contenido_html": "<h3>Competencias Policía Local (Art 53)</h3><ul><li>Proteger autoridades locales.</li><li>Ordenación y dirección del tráfico en casco urbano.</li><li>Atestados por accidentes en casco urbano.</li><li>Policía Administrativa (Ordenanzas, Bandos).</li><li>Seguridad Ciudadana (colaboración).</li></ul>",
+    "flashcards": [
+      { "front": "¿Quién manda la Policía Local?", "back": "El Alcalde" },
+      { "front": "¿Ámbito territorial?", "back": "El término municipal" },
+      { "front": "¿Naturaleza del cuerpo?", "back": "Instituto armado de naturaleza civil" }
+    ],
+    "test": [
+      { "pregunta": "¿Quién instruye atestados en ciudad?", "respuestas": ["Guardia Civil", "Policía Nacional", "Policía Local"], "correcta": 2 }
+    ]
+  },
+  {
+    "id": "local",
+    "titulo": "Régimen Local (LBRL)",
+    "categoria": "admin",
+    "meta": "Ley 7/1985 | Organización",
+    "resumen": "Organización del Ayuntamiento: Alcalde, Pleno, Junta de Gobierno. Competencias municipales y Padrón.",
+    "link_fuente": "norma_local.pdf",
+    "audio_url": "audio_local.mp3",
+    "contenido_html": "<h3>Organización Municipal</h3><ul><li><strong>Alcalde:</strong> Dirige el gobierno y la administración.</li><li><strong>Pleno:</strong> Control y fiscalización. Aprueba ordenanzas y presupuestos.</li><li><strong>JGL:</strong> Asiste al alcalde. Obligatoria en municipios >5000 hab.</li></ul>",
+    "flashcards": [
+      { "front": "¿Quién elige al Alcalde?", "back": "Los Concejales" },
+      { "front": "¿Es obligatorio el Padrón?", "back": "Sí, registro de vecinos" },
+      { "front": "¿Quién aprueba el presupuesto?", "back": "El Pleno" }
+    ],
+    "test": [
+      { "pregunta": "¿Cuándo se constituye el Ayuntamiento?", "respuestas": ["El día de las elecciones", "El vigésimo día tras elecciones", "Cuando diga el Secretario"], "correcta": 1 }
+    ]
+  }
+]

@@ -1,28 +1,29 @@
 [
   {
     "id": "trafico",
-    "titulo": "Tráfico y Seguridad Vial",
+    "titulo": "Código de Tráfico y Seguridad Vial",
     "categoria": "Trafico",
-    "resumen": "Ley de Seguridad Vial, Reglamento General de Circulación y Cuadro de Sanciones.",
     "meta": "RDL 6/2015",
+    "resumen": "Normas de circulación y régimen sancionador.",
+    
     "link_fuente": "https://drive.google.com/file/d/1LbzVV0bCkgcAbDge90_5O--uyxiHIFM2/view?usp=sharing",
-    "audio_url": "https://drive.google.com/file/d/1_GdDZ1LwsW-6Y6tQg5sqKEWJg3mn_tvK/view?usp=sharing",
-    "contenido_html": "<h3>Puntos Clave</h3><ul><li>Tasa Alcohol Aire: 0.25 mg/l (General) / 0.15 mg/l (Novel/Pro).</li><li>Delito Velocidad: +60 km/h (Urbana) / +80 km/h (Interurbana).</li><li>Prescripción Infracciones: Leves (3 meses), Graves (6 meses).</li></ul>",
+    
+    "audio_url": "audio_trafico.mp3",
+    
+    "contenido_html": "<h3>Puntos Clave</h3><ul><li>Tasa general alcohol: 0.25 mg/l.</li><li>Velocidad en ciudad: 30 km/h.</li></ul>",
     "flashcards": [
-      { "front": "¿Tasa alcohol aire conductores noveles?", "back": "0.15 mg/l" },
-      { "front": "¿Plazo para pagar con 50% descuento?", "back": "20 días naturales" },
-      { "front": "¿Puntos por conducir con drogas?", "back": "6 puntos" },
-      { "front": "¿Distancia lateral adelantamiento ciclista?", "back": "1.5 metros" }
+      { "front": "¿Tasa alcohol aire?", "back": "0.25 mg/l" },
+      { "front": "¿Caducidad ITV turismo?", "back": "4 años el primero" }
     ],
     "test": [
       {
-        "pregunta": "¿Qué indica la señal R-2 (STOP)?",
-        "respuestas": ["Ceder el paso", "Detención obligatoria siempre", "Detención solo si vienen coches"],
+        "pregunta": "¿Preferencia en rotonda?",
+        "respuestas": ["El que entra", "El que está dentro", "El más rápido"],
         "correcta": 1
       },
       {
-        "pregunta": "¿Cuál es la velocidad máxima en autopista para turismos?",
-        "respuestas": ["100 km/h", "120 km/h", "130 km/h"],
+        "pregunta": "¿Velocidad autopista?",
+        "respuestas": ["100", "120", "140"],
         "correcta": 1
       }
     ]
